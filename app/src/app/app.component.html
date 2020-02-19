@@ -1,4 +1,40 @@
-<button (click)="open()">clickckck</button>
-<auth-modal [isOpen]="isOpen" (toggle)="isOpen = $event"></auth-modal>
-<router-outlet></router-outlet>
+<div class="header">
+    <div class="nav">
+        <label class="search">
+      <input class="search-input" type="text" placeholder="Search...">
+      <img class="search-icon" src="./private-eye-magnifying-glass.svg" alt="search">
+  </label>
+        <div class="auth">
+            <div *ngIf='!userService.token' class="logIn"><a (click)="login()">Log in</a></div>
+            <div *ngIf='!userService.token' class="delimiter"></div>
+            <div *ngIf='!userService.token' class="joinUs">Join us!</div>
+            <div *ngIf='userService.token' class="logIn"><a (click)="logout()">LogOut</a></div>
+        </div>
+    </div>
+</div>
 
+<div class="recently">
+    <h3>Campaigns with the highest ratings</h3>
+    <div class="recently-info">
+        <img class="recently-info-image" src="https://images.wallpaperscraft.ru/image/ruka_serdtse_kraska_160714_1920x1080.jpg" alt="image">
+        <div class="recently-info-text">
+            <h4>Name of a campaign with link on it</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+        </div>
+    </div>
+</div>
+
+<div class="recently-added">
+    <div class="recently-item" *ngFor="let item of listOfCampaigns | async">
+        <img class="recently-item-image" src="https://images.wallpaperscraft.ru/image/sneg_gory_vershiny_160678_1920x1080.jpg" alt="">
+        <a (click)="getCampaignDetail(item.id)">
+            <h5 class="recently-item-title"> {{ item.name }} </h5>
+        </a>
+        <h6 class="recently-item-link"> {{ item.about }} </h6>
+    </div>
+</div>
+
+<ng-container *ngIf='isOpen'>
+    <auth-modal [open]="isOpen" (isOpen)="isOpen = $event"></auth-modal>
+</ng-container>
+<router-outlet></router-outlet>
