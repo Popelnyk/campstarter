@@ -1,6 +1,8 @@
 import {Component, Input, Output} from '@angular/core';
 
 import {EventEmitter} from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { UserService } from 'src/app/user.service';
 
 @Component({
   selector: 'auth-modal',
@@ -11,16 +13,20 @@ export class AuthModalComponent {
 
   login = '';
   password = '';
-  @Input() isOpen;
+  @Input() open;
 
-  @Output() toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() isOpen: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  onSubmit(event) {
-    console.log(this.login, this.password);
+   constructor(private userService:UserService) {}
+
+  async onSubmit(event) {
+    await this.userService.login({'username': this.login, 'password': this.password})
+    console.log('from onSubmit', this.userService.errors)
+    this.onClose() 
   }
 
   onClose() {
-    this.toggle.emit(false);
+    this.isOpen.emit(false);
   }
 
 }
