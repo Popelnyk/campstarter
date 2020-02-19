@@ -1,3 +1,4 @@
-<auth-modal [open]="isOpen" (isOpen)="isOpen = $event"></auth-modal>
+<button (click)="open()">clickckck</button>
+<auth-modal [isOpen]="isOpen" (toggle)="isOpen = $event"></auth-modal>
 <router-outlet></router-outlet>
 
