@@ -9,7 +9,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app';
 
-  isOpen = true;
+  isOpen = false;
+
+  open() {
+    this.isOpen = true;
+  }
+
 
   close() {
     this.isOpen = false;

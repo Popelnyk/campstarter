@@ -11,16 +11,16 @@ export class AuthModalComponent {
 
   login = '';
   password = '';
-  @Input() open;
+  @Input() isOpen;
 
-  @Output() isOpen: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   onSubmit(event) {
     console.log(this.login, this.password);
   }
 
   onClose() {
-    this.isOpen.emit(false);
+    this.toggle.emit(false);
   }
 
 }
