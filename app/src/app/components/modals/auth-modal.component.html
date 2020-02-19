@@ -1,0 +1,30 @@
+<modal [isOpen]="open">
+  <div class="modal">
+
+    <span class="closeIcon" (click)="onClose()">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Flat_cross_icon.svg/1200px-Flat_cross_icon.svg.png" alt="close">
+    </span>
+
+    <div class="authOther">
+      <div class="facebook authOtherBtn">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Facebook_F_icon.svg/1200px-Facebook_F_icon.svg.png" alt="facebook">
+      </div>
+      <div class="google authOtherBtn">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/588px-Google_%22G%22_Logo.svg.png" alt="google">
+      </div>
+    </div>
+
+
+    <form class="modal-form" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+      <label class="login" for="login">
+        <span class="head">Username</span>
+        <input id="login" [(ngModel)]="login" name="login">
+      </label>
+      <label class="password" for="password">
+        <span class="head">Password</span>
+        <input id="password" [(ngModel)]="password" name="password">
+      </label>
+      <button>Click</button>
+    </form>
+  </div>
+</modal>
