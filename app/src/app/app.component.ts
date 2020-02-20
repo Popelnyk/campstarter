@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
 
@@ -7,34 +7,16 @@ import { UserService } from './user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
-  
-  public listOfCampaigns:any;
+export class AppComponent {
 
-  public user: any;
- 
   isOpen = false;
-
-  constructor(public userService: UserService) { }
- 
-  ngOnInit() {
-    this.user = {
-      username: 'remmidemmi',
-      password: 'fgmglfkf'
-    };
-  }
- 
-  login() {
-    this.isOpen = true
-    //this.userService.login({'username': this.user.username, 'password': this.user.password});
-  }
- 
-  logout() {
-    this.userService.logout();
-  }
 
   close() {
     this.isOpen = false;
+  }
+
+  open() {
+    this.isOpen = true;
   }
 
 }

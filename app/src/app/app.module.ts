@@ -11,6 +11,8 @@ import {FormsModule} from "@angular/forms";
 import { AuthModalComponent } from './components/modals/auth-modal.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ModalComponent } from './ui/Modal/modal.component';
+import {NavigationBarComponent} from "./components/navigationBar/navigation-bar.component";
+import {SvgSearchComponent} from "./icons/Search/search.component";
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import { ModalComponent } from './ui/Modal/modal.component';
     AppComponent,
     ModalComponent,
     AuthModalComponent,
+    NavigationBarComponent,
+    SvgSearchComponent
   ],
   imports: [
     BrowserModule,
