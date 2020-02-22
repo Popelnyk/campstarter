@@ -1,16 +1,19 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnDestroy} from '@angular/core';
 
 @Component({
   selector: 'modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent implements OnInit, OnDestroy {
 
   @Input() classNames;
   @Input() isOpen;
   ngOnInit(): void {
     document.body.style.overflow = "hidden";
+  }
+  ngOnDestroy(): void {
+    document.body.style.overflow = "";
   }
 
 }
