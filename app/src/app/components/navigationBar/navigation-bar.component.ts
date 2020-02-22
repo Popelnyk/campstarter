@@ -13,6 +13,7 @@ export class NavigationBarComponent implements OnInit{
   public user: any;
 
   @Output() openAuthModal: EventEmitter<void> = new EventEmitter<void>();
+  @Output() openRegistrationModal: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(public userService: UserService) { }
 
@@ -30,5 +31,9 @@ export class NavigationBarComponent implements OnInit{
 
   logout() {
     this.userService.logout();
+  }
+
+  join() {
+    this.openRegistrationModal.emit();
   }
 }

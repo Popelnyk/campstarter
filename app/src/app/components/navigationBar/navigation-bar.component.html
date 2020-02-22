@@ -12,7 +12,7 @@
     <div *ngIf="!userService.token" class="login">
       <button (click)="login()">Log in</button>
       <div class="delimiter"></div>
-      <button>Join us!</button>
+      <button (click)="join()">Join us!</button>
     </div>
     <div *ngIf="userService.token" class="logout">
       <button (click)="logout()">Logout</button>

@@ -1,5 +1,4 @@
-<navigation-bar (openAuthModal)="open()"></navigation-bar>
-<ng-container *ngIf='isOpen'>
-    <auth-modal [open]="isOpen" (cbClose)="close()"></auth-modal>
-</ng-container>
+<navigation-bar (openAuthModal)="open(modals.AUTH_MODAL)" (openRegistrationModal)="open(modals.REGISTRATION_MODAL)"></navigation-bar>
+    <auth-modal *ngIf="openedModals[modals.AUTH_MODAL]" [open]="openedModals[modals.AUTH_MODAL]" (cbClose)="close(modals.AUTH_MODAL)"></auth-modal>
+    <registration-modal *ngIf="openedModals[modals.REGISTRATION_MODAL]" [open]="openedModals[modals.REGISTRATION_MODAL]" (cbClose)="close(modals.REGISTRATION_MODAL)"></registration-modal>
 <router-outlet></router-outlet>

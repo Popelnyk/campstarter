@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { UserService } from './user.service';
+
+
+// Modals
+import {AUTH_MODAL} from "./components/modals/auth-modal/auth-modal.component";
+import {REGISTRATION_MODAL} from "./components/modals/registration-modal/registration-modal.component";
 
 @Component({
   selector: 'app-root',
@@ -9,14 +12,34 @@ import { UserService } from './user.service';
 })
 export class AppComponent {
 
-  isOpen = false;
+  openedModals = {
+    [AUTH_MODAL]: false,
+    [REGISTRATION_MODAL]: false
+  };
 
-  close() {
-    this.isOpen = false;
+  modals = {
+    AUTH_MODAL,
+    REGISTRATION_MODAL
+  };
+
+  constructor() {
+    this.initModals();
   }
 
-  open() {
-    this.isOpen = true;
+  initModals(): void {
+    for (const modalKey in this.modals) {
+      if (this.modals.hasOwnProperty(modalKey)) {
+        this.openedModals[modalKey] = false;
+      }
+    }
+  }
+
+  close(type: string) {
+    this.openedModals[type] = false;
+  }
+
+  open(type: string) {
+    this.openedModals[type] = true;
   }
 
 }

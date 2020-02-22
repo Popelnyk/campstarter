@@ -8,11 +8,12 @@ import { AppComponent } from './app.component';
 import { UserService } from './user.service';
 
 import {FormsModule} from "@angular/forms";
-import { AuthModalComponent } from './components/modals/auth-modal.component';
+import { AuthModalComponent } from './components/modals/auth-modal/auth-modal.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ModalComponent } from './ui/Modal/modal.component';
 import {NavigationBarComponent} from "./components/navigationBar/navigation-bar.component";
 import {SvgSearchComponent} from "./icons/Search/search.component";
+import {RegistrationModalComponent} from "./components/modals/registration-modal/registration-modal.component";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {SvgSearchComponent} from "./icons/Search/search.component";
     ModalComponent,
     AuthModalComponent,
     NavigationBarComponent,
-    SvgSearchComponent
+    SvgSearchComponent,
+    RegistrationModalComponent
   ],
   imports: [
     BrowserModule,

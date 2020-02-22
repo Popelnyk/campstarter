@@ -4,6 +4,8 @@ import {EventEmitter} from "@angular/core";
 import {HttpClient} from '@angular/common/http';
 import {UserService} from 'src/app/user.service';
 
+export const AUTH_MODAL = 'AUTH_MODAL';
+
 @Component({
   selector: 'auth-modal',
   templateUrl: './auth-modal.component.html',
