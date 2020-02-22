@@ -54,7 +54,7 @@ export class UserService {
   }
 
   get isLogin() {
-    return this.token !== '';
+    return this.token !== null;
   }
 
 }
