@@ -3,24 +3,4 @@
   <auth-modal *ngIf="openedModals[modals.AUTH_MODAL]" [open]="openedModals[modals.AUTH_MODAL]" (cbClose)="close(modals.AUTH_MODAL)"></auth-modal>
   <registration-modal *ngIf="openedModals[modals.REGISTRATION_MODAL]" [open]="openedModals[modals.REGISTRATION_MODAL]" (cbClose)="close(modals.REGISTRATION_MODAL)"></registration-modal>
   <router-outlet></router-outlet>
-  <div class="recently">
-    <h3>Campaigns with the highest ratings</h3>
-    <div class="recently-info">
-      <img class="recently-info-image" src="https://images.wallpaperscraft.ru/image/ruka_serdtse_kraska_160714_1920x1080.jpg" alt="image">
-      <div class="recently-info-text">
-        <h4>Name of a campaign with link on it</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="recently-added">
-    <div class="recently-item" *ngFor="let item of listOfCampaigns | async">
-      <img class="recently-item-image" src="https://images.wallpaperscraft.ru/image/sneg_gory_vershiny_160678_1920x1080.jpg" alt="">
-      <a (click)="getCampaignDetail(item.id)">
-        <h5 class="recently-item-title"> {{ item.name }} </h5>
-      </a>
-      <h6 class="recently-item-link"> {{ item.about }} </h6>
-    </div>
-  </div>
 </div>
