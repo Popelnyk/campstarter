@@ -1,11 +1,12 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+
 
 @Injectable()
 export class UserService {
 
   private httpOptions: any;
-  public token: string = '';
+  public token = '';
   public errors: any;
   public userId: number;
 
@@ -50,6 +51,10 @@ export class UserService {
     console.log(this.userId)
     console.log(token_decoded)
     //this.username = token_decoded.username;
+  }
+
+  get isLogin() {
+    return this.token !== '';
   }
 
 }

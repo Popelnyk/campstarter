@@ -1,7 +1,7 @@
 import {Component, Input, Output} from '@angular/core';
 
 import {EventEmitter} from "@angular/core";
-import {UserService} from 'src/app/user.service';
+import {UserService} from 'src/app/services/user.service';
 import {HttpClient} from "@angular/common/http"
 
 export const REGISTRATION_MODAL = 'REGISTRATION_MODAL';

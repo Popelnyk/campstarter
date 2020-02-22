@@ -1,8 +1,7 @@
 import {Component, Input, Output} from '@angular/core';
 
 import {EventEmitter} from "@angular/core";
-import {HttpClient} from '@angular/common/http';
-import {UserService} from 'src/app/user.service';
+import {UserService} from 'src/app/services/user.service';
 
 export const AUTH_MODAL = 'AUTH_MODAL';
 
@@ -24,9 +23,12 @@ export class AuthModalComponent {
   }
 
   onSubmit(event) {
-    this.userService.login({'username': this.login, 'password': this.password});
-    console.log('from onSubmit', this.userService.errors);
-    if(!(this.userService.errors == 400) && !(this.userService.errors == 401)) {
+    this.userService.login({
+      username: this.login,
+      password: this.password
+    }).catch(error => console.error(error));
+
+    if(!(this.userService.errors === 400) && !(this.userService.errors === 401)) {
       this.cbClose.emit();
     }
   }

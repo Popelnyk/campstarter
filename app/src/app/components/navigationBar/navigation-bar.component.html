@@ -9,12 +9,12 @@
   </label>
   <div class="auth">
 
-    <div *ngIf="!userService.token" class="login">
+    <div *ngIf="!userService.isLogin" class="login">
       <button (click)="login()">Log in</button>
       <div class="delimiter"></div>
       <button (click)="join()">Join us!</button>
     </div>
-    <div *ngIf="userService.token" class="logout">
+    <div *ngIf="userService.isLogin" class="logout">
       <button (click)="logout()">Logout</button>
     </div>
   </div>

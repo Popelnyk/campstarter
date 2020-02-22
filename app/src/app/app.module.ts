@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserService } from './user.service';
+import { UserService } from './services/user.service';
 
 import {FormsModule} from "@angular/forms";
 import { AuthModalComponent } from './components/modals/auth-modal/auth-modal.component';
@@ -15,6 +15,8 @@ import {NavigationBarComponent} from "./components/navigationBar/navigation-bar.
 import {SvgSearchComponent} from "./icons/Search/search.component";
 import {RegistrationModalComponent} from "./components/modals/registration-modal/registration-modal.component";
 import {UserProfileComponent} from "./components/pages/user-profile/user-profile.component";
+import {MainLayoutComponent} from "./components/pages/main-layout/main-layout.component";
+import {CampaignsService} from "./services/campaigns.service";
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import {UserProfileComponent} from "./components/pages/user-profile/user-profile
     NavigationBarComponent,
     SvgSearchComponent,
     RegistrationModalComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    MainLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import {UserProfileComponent} from "./components/pages/user-profile/user-profile
     HttpClientModule,
     FormsModule,
   ],
-  providers: [UserService],
+  providers: [UserService, CampaignsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
