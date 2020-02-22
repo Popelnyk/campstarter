@@ -14,6 +14,7 @@ import { ModalComponent } from './ui/Modal/modal.component';
 import {NavigationBarComponent} from "./components/navigationBar/navigation-bar.component";
 import {SvgSearchComponent} from "./icons/Search/search.component";
 import {RegistrationModalComponent} from "./components/modals/registration-modal/registration-modal.component";
+import {UserProfileComponent} from "./components/pages/user-profile/user-profile.component";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {RegistrationModalComponent} from "./components/modals/registration-modal
     AuthModalComponent,
     NavigationBarComponent,
     SvgSearchComponent,
-    RegistrationModalComponent
+    RegistrationModalComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
