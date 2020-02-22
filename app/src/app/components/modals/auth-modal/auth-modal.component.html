@@ -1,9 +1,9 @@
 <modal [isOpen]="open">
     <div class="modal">
 
-        <span class="closeIcon" (click)="onClose()">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Flat_cross_icon.svg/1200px-Flat_cross_icon.svg.png" alt="close">
-      </span>
+        <span class="closeIcon" (click)="cbClose.emit()">
+          <img src="https://i.ya-webdesign.com/images/close-icon-png-3.png" alt="close">
+        </span>
 
         <div class="authOther">
             <div class="facebook authOtherBtn">

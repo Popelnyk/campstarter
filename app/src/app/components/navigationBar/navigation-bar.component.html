@@ -1,0 +1,22 @@
+<div class="nav">
+  <div class="logo">
+    <a class="logo-title" href="#">Campstarter</a>
+  </div>
+
+  <label class="search">
+    <input class="search-input" type="text" placeholder="Search...">
+    <svg-search></svg-search>
+  </label>
+  <div class="auth">
+
+    <div *ngIf="!userService.token" class="login">
+      <button (click)="login()">Log in</button>
+      <div class="delimiter"></div>
+      <button (click)="join()">Join us!</button>
+    </div>
+    <div *ngIf="userService.token" class="logout">
+      <button (click)="logout()">Logout</button>
+    </div>
+  </div>
+
+</div>

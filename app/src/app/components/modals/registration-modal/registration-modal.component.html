@@ -1,0 +1,26 @@
+<modal [isOpen]="open">
+  <div class="modal">
+    <span (click)="cbClose.emit()" class="closeIcon">
+      <img alt="close" src="https://i.ya-webdesign.com/images/close-icon-png-3.png">
+    </span>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="modal-form">
+      <label>
+        <span class="head">Name</span>
+        <input name="name" ngModel>
+      </label>
+      <label>
+        <span class="head">Username</span>
+        <input name="username" ngModel>
+      </label>
+      <label>
+        <span class="head">Password</span>
+        <input name="password" ngModel>
+      </label>
+      <label>
+        <span class="head">Re-enter password</span>
+        <input name="repeatPassword" ngModel>
+      </label>
+      <button>Click</button>
+    </form>
+  </div>
+</modal>
