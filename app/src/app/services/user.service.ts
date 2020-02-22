@@ -6,7 +6,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class UserService {
 
   private httpOptions: any;
-  public token = '';
+  public token = null;
   public errors: any;
   public userId: number;
 
@@ -50,7 +50,7 @@ export class UserService {
     this.userId = token_decoded.user_id;
     console.log(this.userId)
     console.log(token_decoded)
-    //this.username = token_decoded.username;
+    this.userId = token_decoded.user_id;
   }
 
   get isLogin() {
