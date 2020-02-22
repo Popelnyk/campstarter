@@ -17,6 +17,7 @@ import {RegistrationModalComponent} from "./components/modals/registration-modal
 import {UserProfileComponent} from "./components/pages/user-profile/user-profile.component";
 import {MainLayoutComponent} from "./components/pages/main-layout/main-layout.component";
 import {CampaignsService} from "./services/campaigns.service";
+import {ButtonDirective} from "./directives/button.directive";
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {CampaignsService} from "./services/campaigns.service";
     SvgSearchComponent,
     RegistrationModalComponent,
     UserProfileComponent,
-    MainLayoutComponent
+    MainLayoutComponent,
+    ButtonDirective
   ],
   imports: [
     BrowserModule,

@@ -5,7 +5,7 @@ import {UserProfileComponent} from "./components/pages/user-profile/user-profile
 import {MainLayoutComponent} from "./components/pages/main-layout/main-layout.component";
 
 const routes: Routes = [
-  {path: 'user/:id', component: UserProfileComponent},
+  {path: 'users/:id', component: UserProfileComponent},
   {path: '', component: MainLayoutComponent}
 ];
 

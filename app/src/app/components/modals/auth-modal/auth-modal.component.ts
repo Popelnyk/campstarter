@@ -22,8 +22,8 @@ export class AuthModalComponent {
   constructor(private userService: UserService) {
   }
 
-  onSubmit(event) {
-    this.userService.login({
+  async onSubmit(event) {
+    await this.userService.login({
       username: this.login,
       password: this.password
     }).catch(error => console.error(error));
