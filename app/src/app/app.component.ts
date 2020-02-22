@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 // Modals
 import {AUTH_MODAL} from "./components/modals/auth-modal/auth-modal.component";
 import {REGISTRATION_MODAL} from "./components/modals/registration-modal/registration-modal.component";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -22,8 +23,21 @@ export class AppComponent {
     REGISTRATION_MODAL
   };
 
-  constructor() {
+  public bestCampaign: any;
+  public listOfCampaigns: any;
+
+  constructor(private http: HttpClient) {
     this.initModals();
+  }
+
+  ngOnInit() {
+    this.http.get('http://127.0.0.1:8000/campaigns/best/').subscribe(
+      (data) => this.bestCampaign = data[0]
+    )
+
+    this.http.get('http://127.0.0.1:8000/campaigns/').subscribe(
+      (data) => this.listOfCampaigns = data
+    )
   }
 
   initModals(): void {

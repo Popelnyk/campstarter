@@ -23,10 +23,12 @@ export class AuthModalComponent {
   constructor(private userService: UserService) {
   }
 
-  async onSubmit(event) {
-    await this.userService.login({'username': this.login, 'password': this.password});
+  onSubmit(event) {
+    this.userService.login({'username': this.login, 'password': this.password});
     console.log('from onSubmit', this.userService.errors);
-    this.cbClose.emit();
+    if(!(this.userService.errors == 400) && !(this.userService.errors == 401)) {
+      this.cbClose.emit();
+    }
   }
 
 }

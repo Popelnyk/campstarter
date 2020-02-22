@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class UserService {
- 
+
   private httpOptions: any;
   public token: string = '';
   public errors: any;
@@ -14,20 +14,30 @@ export class UserService {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
   }
- 
+
   public async login(user) {
     await this.http.post('http://127.0.0.1:8000/api/token/', JSON.stringify(user), this.httpOptions).toPromise().then(
-      (data) => this.updateData(data['access']),
+      (data) => {
+        this.updateData(data['access'])
+      },
       (err) => {
-         this.errors = err['status']
+        this.errors = err['status']
       }
     );
-
   }
- 
+
   public logout() {
     this.token = null;
-  } 
+  }
+
+  public async register(user) {
+    await this.http.post('http://127.0.0.1:8000/users/', JSON.stringify(user), this.httpOptions).toPromise().then(
+      (data) => console.log(data),
+      (err) => {
+        this.errors = err['status']
+      }
+    )
+  }
 
   private updateData(token) {
     this.token = token;
