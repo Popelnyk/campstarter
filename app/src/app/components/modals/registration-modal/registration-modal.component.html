@@ -14,13 +14,15 @@
       </label>
       <label>
         <span class="head">Password</span>
-        <input name="password" ngModel>
+        <input autocomplete="on" type="password" name="password" ngModel>
       </label>
       <label>
         <span class="head">Re-enter password</span>
-        <input name="repeatPassword" ngModel>
+        <input autocomplete="on" type="password" name="repeatPassword" ngModel>
       </label>
+      <span [ngClass]="{active: haveError}" class="error">Неправильно заполнены поля</span>
       <button>Click</button>
     </form>
+
   </div>
 </modal>

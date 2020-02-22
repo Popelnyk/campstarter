@@ -15,14 +15,14 @@
         </div>
 
 
-        <form class="modal-form" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+        <form class="modal-form" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" autocomplete="on">
             <label class="login" for="login">
           <span class="head">Username</span>
           <input id="login" [(ngModel)]="login" name="login">
         </label>
             <label class="password" for="password">
           <span class="head">Password</span>
-          <input id="password" [(ngModel)]="password" name="password">
+          <input autocomplete="on" type="password" id="password" [(ngModel)]="password" name="password">
         </label>
             <button>Click</button>
         </form>

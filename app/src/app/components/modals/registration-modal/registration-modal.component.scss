@@ -58,3 +58,12 @@ button {
     background: #555555;
   }
 }
+
+.error {
+  color: #f11;
+  font-weight: bold;
+  visibility: hidden;
+  &.active {
+    visibility: visible;
+  }
+}

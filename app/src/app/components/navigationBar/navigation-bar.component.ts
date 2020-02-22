@@ -8,8 +8,6 @@ import {UserService} from "../../services/user.service";
 })
 export class NavigationBarComponent implements OnInit{
 
-  public listOfCampaigns: [] = [];
-
   public user: any;
 
   @Output() openAuthModal: EventEmitter<void> = new EventEmitter<void>();
@@ -36,4 +34,6 @@ export class NavigationBarComponent implements OnInit{
   join() {
     this.openRegistrationModal.emit();
   }
+
+
 }

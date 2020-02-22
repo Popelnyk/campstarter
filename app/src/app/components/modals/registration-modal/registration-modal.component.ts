@@ -23,6 +23,8 @@ export class RegistrationModalComponent {
   password = '';
   repeatPassword = '';
 
+  haveError = false;
+
 
   async onSubmit({form: {value: values}}) {
     this.name = values.name;
@@ -30,9 +32,20 @@ export class RegistrationModalComponent {
     this.password = values.password;
     this.repeatPassword = values.repeatPassword;
 
+    const ERRORS = [400, 401, 500];
+
     if(this.repeatPassword == this.password) {
-      this.userService.register({username: this.username, password: this.password, campaigns: []});
-      this.cbClose.emit()
+      await this.userService.register({username: this.username, password: this.password, campaigns: []});
+
+      if(ERRORS.indexOf(this.userService.errors) === -1) {
+        this.cbClose.emit();
+        await this.userService.login({
+          username: this.username,
+          password: this.password
+        });
+      } else {
+        this.haveError = true;
+      }
     }
   }
 }

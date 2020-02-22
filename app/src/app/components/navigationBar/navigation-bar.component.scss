@@ -49,6 +49,17 @@
       margin: 0 8px;
     }
   }
+  .logout {
+    display: flex;
+    align-items: center;
+    height: inherit;
+    .user-logo {
+      width: 40px;
+      height: 40px;
+      background: #333333;
+      border-radius: 50%;
+    }
+  }
   button {
     background: transparent;
     color: #ffffff;

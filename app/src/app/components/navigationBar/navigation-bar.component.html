@@ -15,6 +15,7 @@
       <button (click)="join()">Join us!</button>
     </div>
     <div *ngIf="userService.isLogin" class="logout">
+      <a class="user-logo" [routerLink]="'/users/'+userService.userId"></a>
       <button (click)="logout()">Logout</button>
     </div>
   </div>
