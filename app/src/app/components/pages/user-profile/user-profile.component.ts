@@ -25,6 +25,7 @@ export class UserProfileComponent implements OnInit{
   public hometown:string = '';
   public work:string = '';
   public hobbies:string = '';
+  public money:number = null;
   public listOfCampaigns:Array<ICampaign> = [];
   public username:string = null;
 
@@ -52,6 +53,7 @@ export class UserProfileComponent implements OnInit{
         this.work = data['work'];
         this.hobbies = data['hobbies'];
         this.listOfCampaigns = data['campaigns'];
+        this.money = data['money'];
         this.username = data['username'];
       }
     )

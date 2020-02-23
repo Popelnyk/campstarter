@@ -6,7 +6,6 @@ import {ICampaign, ICampaignBonus} from "../../../services/campaigns.service";
 import {UserService} from "../../../services/user.service";
 import {ModalsService} from "../../../services/modals.service";
 
-
 @Component({
   selector: 'app-campaign-profile',
   templateUrl: './campaign-profile.component.html',
