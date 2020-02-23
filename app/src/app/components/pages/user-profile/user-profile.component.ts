@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {BehaviorSubject, Subscription} from "rxjs";
 import {ModalsService} from "../../../services/modals.service";
 import {HttpClient} from "@angular/common/http";
@@ -21,20 +21,27 @@ export class UserProfileComponent implements OnInit{
 
 
   public id:number = null;
-  public name:string = '';
+  public name:string = null;
   public hometown:string = '';
   public work:string = '';
   public hobbies:string = '';
   public listOfCampaigns:Array<ICampaign> = [];
+  public username:string = null;
+
+  error = false;
 
   private routeSub: Subscription;
-  constructor(private route: ActivatedRoute, private http: HttpClient, private userService: UserService, public modalsService: ModalsService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient, private userService: UserService, public modalsService: ModalsService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {
       this.id = params.id;
+      this.profileUpdate(this.id);
     });
-    this.profileUpdate(this.id);
+
+    if(this.username === null) {
+      await this.router.navigate(['/404']);
+    }
   }
 
   async profileUpdate(id) {
@@ -45,6 +52,7 @@ export class UserProfileComponent implements OnInit{
         this.work = data['work'];
         this.hobbies = data['hobbies'];
         this.listOfCampaigns = data['campaigns'];
+        this.username = data['username'];
       }
     )
   }
