@@ -4,8 +4,8 @@ import {UserService} from "./user.service";
 import {BehaviorSubject, Observable} from "rxjs";
 
 export interface ICampaignBonus {
-  amount: number,
-  description: string;
+  value: number,
+  about: string;
 }
 
 export interface ICampaign {
@@ -52,7 +52,8 @@ export class CampaignsService {
     );
   }
 
-  registerCampaign(campaign, bonuses) {
+
+  registerCampaign(campaign) {
     console.log(campaign);
     console.log(this.userService.token);
 
@@ -63,18 +64,8 @@ export class CampaignsService {
       })
     };
 
-    this.http.post('http://127.0.0.1:8000/campaigns/', JSON.stringify(campaign), httpOptions).toPromise().then(
-      (data) => {
-        for(let i = 0; i < bonuses.length; i+=1) {
-          bonuses[i]['campaign'] = data['id'];
-          console.log(bonuses);
-          this.http.post(`http://127.0.0.1:8000/campaigns/${data['id']}/addBonus/`, JSON.stringify(bonuses[i]),
-            httpOptions).subscribe(
-            (data) => console.log(data),
-            error => console.log(error)
-          )
-        }
-      },
+    this.http.post('http://127.0.0.1:8000/campaigns/', JSON.stringify(campaign), httpOptions).subscribe(
+      (data) => console.log(data),
       error => console.log(error)
     )
   }

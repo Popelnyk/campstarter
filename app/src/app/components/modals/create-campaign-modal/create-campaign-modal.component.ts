@@ -35,7 +35,7 @@ export class CreateCampaignModalComponent implements OnInit, ICampaign  {
     this.amountMoney = +values['amount-aim'];
     this.campaignsService.registerCampaign(
       { name: this.name, theme: this.theme, about: this.about,
-        youtube_link: this.videoLink, goal_amount_of_money: this.amountMoney}, this.bonuses
+        youtube_link: this.videoLink, goal_amount_of_money: this.amountMoney, bonuses: JSON.stringify(this.bonuses)}
     );
     this.cbClose.emit();
   }
@@ -61,8 +61,7 @@ export class CreateCampaignModalComponent implements OnInit, ICampaign  {
     if(about.length && amount.length) {
       this.bonuses.push({
         value: +amount,
-        about: about,
-        campaign: 0,
+        about: about
       });
       inputDesc.value = '';
       inputAmount.value = '';
