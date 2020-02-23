@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 
 import {ActivatedRoute} from "@angular/router";
-import {Subscription} from "rxjs";
+import {BehaviorSubject, Subscription} from "rxjs";
 import {ModalsService} from "../../../services/modals.service";
 import {HttpClient} from "@angular/common/http";
 import {UserService} from "../../../services/user.service";
+import { Observable } from 'rxjs'
 
 interface ICampaign {
   name?: string;
@@ -36,8 +37,8 @@ export class UserProfileComponent implements OnInit{
     });
   }
 
-  profileUpdate(id) {
-    this.http.get(`http://127.0.0.1:8000/users/${id}/`).subscribe(
+  async profileUpdate(id) {
+    await this.http.get(`http://127.0.0.1:8000/users/${id}/`).subscribe(
       (data) => {
         this.name = data['name'];
         this.hometown = data['hometown'];

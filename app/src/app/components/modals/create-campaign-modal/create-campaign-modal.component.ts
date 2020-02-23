@@ -16,7 +16,7 @@ export class CreateCampaignModalComponent implements OnInit, ICampaign  {
   name = '';
   theme = '';
   tags = [];
-  description = '';
+  about = '';
   videoLink = '';
   amountMoney = 0;
   bonuses = [];
@@ -30,9 +30,13 @@ export class CreateCampaignModalComponent implements OnInit, ICampaign  {
 
   onSubmit({form: {value: values}}): void {
     this.name = values['campaign-name'];
-    this.description = values.description;
+    this.about = values.description;
     this.videoLink = values['video-link'];
     this.amountMoney = +values['amount-aim'];
+    this.campaignsService.registerCampaign(
+      { name: this.name, theme: this.theme, about: this.about,
+        youtube_link: this.videoLink, goal_amount_of_money: this.amountMoney}
+    );
     this.cbClose.emit();
   }
 

@@ -4,7 +4,7 @@
     <img class="recently-info-image" src="https://images.wallpaperscraft.ru/image/ruka_serdtse_kraska_160714_1920x1080.jpg" alt="image">
     <div class="recently-info-text">
       <h4>{{ campaignsService.bestCampaign.name }}</h4>
-      <p>{{ campaignsService.bestCampaign.description }}</p>
+      <p>{{ campaignsService.bestCampaign.about }}</p>
     </div>
   </div>
 </div>
@@ -13,6 +13,6 @@
   <div class="recently-item" *ngFor="let item of campaignsService.listOfCampaigns">
     <img class="recently-item-image" src="https://images.wallpaperscraft.ru/image/sneg_gory_vershiny_160678_1920x1080.jpg" alt="">
     <h5 class="recently-item-title"> {{ item.name }} </h5>
-    <h6 class="recently-item-link"> {{ item.description }} </h6>
+    <h6 class="recently-item-link"> {{ item.about }} </h6>
   </div>
 </div>
