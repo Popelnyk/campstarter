@@ -3,6 +3,9 @@ import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
 import {INews} from "../../lists/list-news/list-news.component";
 import {IComment} from "../../lists/list-comments/list-comments.component";
+import {HttpClient} from "@angular/common/http";
+import {ICampaignBonus} from "../../../services/campaigns.service";
+
 
 @Component({
   selector: 'app-campaign-profile',
@@ -12,6 +15,15 @@ import {IComment} from "../../lists/list-comments/list-comments.component";
 export class CampaignProfileComponent implements OnInit {
 
   id:number = null;
+  name:string = '';
+  about:string = '';
+  owner:string = '';
+  theme:string = '';
+  videoLink:string = '';
+  goalAmount:number = null;
+  curAmount:number = null;
+  bonuses:Array<ICampaignBonus> = [];
+
 
   stars = [1, 2, 3, 4, 5];
 
@@ -21,38 +33,37 @@ export class CampaignProfileComponent implements OnInit {
 
   currentTab = this.tabs[0];
 
-  news: Array<INews> = [
-    {
-      title: "My new1",
-      about: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore molestias numquam optio qui quibusdam quidem similique, sunt? Adipisci deserunt distinctio dolorum id in quibusdam suscipit ullam ut! Architecto corporis esse est magnam nam neque provident quia quos suscipit vel. Amet officiis possimus quia quibusdam sapiente voluptatum? Cumque dicta est voluptates?",
-      creationDate: '21.02.2020'
-    },
-    {
-      title: "My new2",
-      about: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore molestias numquam optio qui quibusdam quidem similique, sunt? Adipisci deserunt distinctio dolorum id in quibusdam suscipit ullam ut! Architecto corporis esse est magnam nam neque provident quia quos suscipit vel. Amet officiis possimus quia quibusdam sapiente voluptatum? Cumque dicta est voluptates?",
-      creationDate: '21.02.2020'
-    },
-    {
-      title: "My new3",
-      about: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore molestias numquam optio qui quibusdam quidem similique, sunt? Adipisci deserunt distinctio dolorum id in quibusdam suscipit ullam ut! Architecto corporis esse est magnam nam neque provident quia quos suscipit vel. Amet officiis possimus quia quibusdam sapiente voluptatum? Cumque dicta est voluptates?",
-      creationDate: '21.02.2020'
-    }
-  ];
+  news: Array<INews> = [];
 
-  comments: Array<IComment> = [{
-    owner: "nikita",
-    creationDate: "22.01.2001",
-    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore molestias numquam optio qui quibusdam quidem similique, sunt? Adipisci deserunt distinctio dolorum id in quibusdam suscipit ullam ut! Architecto corporis esse est magnam nam neque provident quia quos suscipit vel. Amet officiis possimus quia quibusdam sapiente voluptatum? Cumque dicta est voluptates?",
-    likes: 40
-  }];
+  comments: Array<IComment> = [];
 
   private routeSub: Subscription;
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
       this.id = params.id;
+      this.updateCampaign(this.id);
     });
+    console.log(this.id)
+  }
+
+  updateCampaign(id) {
+    this.http.get(`http://127.0.0.1:8000/campaigns/${id}/`).subscribe(
+      (data) => {
+        this.name = data['name'];
+        this.theme = data['theme'];
+        this.about = data['about'];
+        this.videoLink = data['youtube_link'];
+        this.owner = data['owner'];
+        this.goalAmount = parseInt(data['goal_amount_of_money']);
+        this.curAmount = parseInt(data['current_amount_of_money']);
+        this.activeStar = parseInt(data['total_rating']);
+        if(data['bonuses'])
+          this.bonuses = JSON.parse(data['bonuses']);
+      },
+      error => console.log(error)
+    );
   }
 
   onTabClick({tabName}) {
