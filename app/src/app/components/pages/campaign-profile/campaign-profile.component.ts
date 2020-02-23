@@ -16,7 +16,7 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
   name:string = '';
   about:string = '';
   owner:string = '';
-  ownerId: string | number;
+  ownerId: string | number = '';
   theme:string = '';
   videoLink:string = '';
   goalAmount:number = null;
