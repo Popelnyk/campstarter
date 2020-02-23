@@ -25,6 +25,7 @@ import { ListNewsComponent } from './components/lists/list-news/list-news.compon
 import { ListCommentsComponent } from './components/lists/list-comments/list-comments.component';
 import { LikesIconComponent } from './icons/Likes/likes-icon/likes-icon.component';
 import { StarIconComponent } from './icons/Star/star-icon.component';
+import { PostNewModalComponent } from './components/modals/post-new/post-new.component';
 
 
 
@@ -45,6 +46,7 @@ import { StarIconComponent } from './icons/Star/star-icon.component';
     ListCommentsComponent,
     LikesIconComponent,
     StarIconComponent,
+    PostNewModalComponent,
   ],
   imports: [
     BrowserModule,

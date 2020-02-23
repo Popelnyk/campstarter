@@ -7,5 +7,6 @@
   <auth-modal *ngIf="modalsService.openedModals[modalsService.modals.AUTH_MODAL]" (cbClose)="closeModal(modalsService.modals.AUTH_MODAL)"></auth-modal>
   <registration-modal *ngIf="modalsService.openedModals[modalsService.modals.REGISTRATION_MODAL]"  (cbClose)="closeModal(modalsService.modals.REGISTRATION_MODAL)"></registration-modal>
   <create-campaign-modal *ngIf="modalsService.openedModals[modalsService.modals.CREATE_CAMPAIGN_MODAL]" (cbClose)="closeModal(modalsService.modals.CREATE_CAMPAIGN_MODAL)"></create-campaign-modal>
+  <post-new-modal *ngIf="modalsService.openedModals[modalsService.modals.POST_NEW_MODAL]" (cbClose)="closeModal(modalsService.modals.POST_NEW_MODAL)"></post-new-modal>
   <router-outlet></router-outlet>
 </div>
