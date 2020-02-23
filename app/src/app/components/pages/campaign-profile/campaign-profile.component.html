@@ -1,0 +1,64 @@
+<div class="container">
+
+  <div class="floor">
+    <div class="campaign-profile">
+      <div class="header">
+        <div class="title">
+          <h1>Campaign name...</h1>
+          <div class="stars">
+            <svg-star class="star" *ngFor="let star of stars" [active]="star <= activeStar" (click)="onSelectStar(star)"></svg-star>
+          </div>
+        </div>
+        <div class="user">
+          <div class="photo"></div>
+          <div class="owner-name">
+            Alex
+          </div>
+        </div>
+      </div>
+      <div class="theme">Product manager</div>
+      <div class="tags">
+        <div class="title">Tags:</div>
+        <div class="items">tag1, tag2, tag3, tag4</div>
+      </div>
+      <div class="hr"></div>
+      <div class="about">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore molestias numquam optio qui quibusdam quidem similique, sunt? Adipisci deserunt distinctio dolorum id in quibusdam suscipit ullam ut! Architecto corporis esse est magnam nam neque provident quia quos suscipit vel. Amet officiis possimus quia quibusdam sapiente voluptatum? Cumque dicta est voluptates?
+      </div>
+    </div>
+    <div class="status-amount">
+    <span class="goal amount">
+      <span class="title">Goal</span>
+      <span class="value">1500$</span>
+    </span>
+      <span class="received amount">
+      <span class="title">Received</span>
+      <span class="value">746$</span>
+    </span>
+      <div class="bonuses-list">
+        <div class="title">Bonuses list</div>
+        <div class="line">
+          donate 10$ and receive
+        </div>
+        <div class="line">
+          donate 20$ and receive
+        </div>
+      </div>
+      <button class="btn donate">
+        Donate
+      </button>
+    </div>
+  </div>
+
+  <div class="hr"></div>
+
+  <div class="tabs">
+    <div class="tab" *ngFor="let tab of tabs" (click)="onTabClick({tabName: tab})" [ngClass]="{active: tab === currentTab}" >{{tab}}</div>
+  </div>
+
+  <div [ngSwitch]="currentTab" class="list">
+    <app-list-news [news]="news" *ngSwitchCase="'NEWS'"></app-list-news>
+    <app-list-comments [comments]="comments" *ngSwitchCase="'COMMENTS'"></app-list-comments>
+  </div>
+
+</div>

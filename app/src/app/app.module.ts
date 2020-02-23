@@ -19,10 +19,13 @@ import {MainLayoutComponent} from "./components/pages/main-layout/main-layout.co
 import {CampaignsService} from "./services/campaigns.service";
 import {ButtonDirective} from "./directives/button.directive";
 import { CreateCampaignModalComponent } from './components/modals/create-campaign-modal/create-campaign-modal.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
-import {MatSliderModule} from "@angular/material/slider";
 import {ModalsService} from "./services/modals.service";
+import { CampaignProfileComponent } from './components/pages/campaign-profile/campaign-profile.component';
+import { ListNewsComponent } from './components/lists/list-news/list-news.component';
+import { ListCommentsComponent } from './components/lists/list-comments/list-comments.component';
+import { LikesIconComponent } from './icons/Likes/likes-icon/likes-icon.component';
+import { StarIconComponent } from './icons/Star/star-icon.component';
+
 
 
 @NgModule({
@@ -36,14 +39,18 @@ import {ModalsService} from "./services/modals.service";
     UserProfileComponent,
     MainLayoutComponent,
     ButtonDirective,
-    CreateCampaignModalComponent
+    CreateCampaignModalComponent,
+    CampaignProfileComponent,
+    ListNewsComponent,
+    ListCommentsComponent,
+    LikesIconComponent,
+    StarIconComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule,
   ],
   providers: [UserService, CampaignsService, ModalsService],
   bootstrap: [AppComponent]

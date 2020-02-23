@@ -33,8 +33,8 @@ export class UserProfileComponent implements OnInit{
   ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {
       this.id = params.id;
-      this.profileUpdate(params.id)
     });
+    this.profileUpdate(this.id);
   }
 
   async profileUpdate(id) {
@@ -45,7 +45,6 @@ export class UserProfileComponent implements OnInit{
         this.work = data['work'];
         this.hobbies = data['hobbies'];
         this.listOfCampaigns = data['campaigns'];
-        console.log(data)
       }
     )
   }
