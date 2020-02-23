@@ -33,9 +33,9 @@ export class CampaignProfileComponent implements OnInit {
 
   currentTab = this.tabs[0];
 
-  news: Array<INews> = [];
+  news: any = [];
 
-  comments: Array<IComment> = [];
+  comments: any = [];
 
   private routeSub: Subscription;
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
@@ -44,8 +44,28 @@ export class CampaignProfileComponent implements OnInit {
     this.routeSub = this.route.params.subscribe(params => {
       this.id = params.id;
       this.updateCampaign(this.id);
+      this.updateComments(this.id);
+      this.updateNews(this.id);
     });
     console.log(this.id)
+  }
+
+  updateComments(id) {
+    this.http.get(`http://127.0.0.1:8000/campaigns/${id}/comments/`).subscribe(
+      (data) => {
+        this.comments = data;
+      },
+      error => console.log(error)
+    )
+  }
+
+  updateNews(id) {
+    this.http.get(`http://127.0.0.1:8000/campaigns/${id}/news/`).subscribe(
+      (data) => {
+        this.news = data;
+      },
+      error => console.log(error)
+    )
   }
 
   updateCampaign(id) {

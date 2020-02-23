@@ -1,10 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 export interface IComment {
+  id: number;
   owner: string;
   text: string;
-  creationDate: string;
-  likes: number;
+  creation_date: string;
+  likes_count: number;
+  campaign: number;
 }
 
 @Component({
