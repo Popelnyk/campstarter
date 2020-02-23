@@ -1,0 +1,86 @@
+<modal>
+  <div class="modal">
+    <span (click)="cbClose.emit()" class="closeIcon">
+      <img alt="close" src="https://i.ya-webdesign.com/images/close-icon-png-3.png">
+    </span>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="modal-form">
+      <label class="campaign-name">
+        <span class="head">Campaign name</span>
+        <input class="input-text input-campaign-name" name="campaign-name" ngModel>
+      </label>
+
+      <label class="campaign-themes">
+        <span class="head">Theme</span>
+        <div class="themes">
+            <span
+              (click)="onChooseTheme(itemTheme)"
+              *ngFor="let itemTheme of campaignsService.themes"
+              [ngClass]="{chosen: theme === itemTheme}"
+              class="theme"
+            >
+              {{itemTheme}}
+            </span>
+        </div>
+      </label>
+
+      <div class="campaign-tags">
+        <span class="head">Tags</span>
+        <div class="tags">
+          <span *ngFor="let tag of tags" class="tag">{{tag}}</span>
+          <div class="add-tag">
+            <button (click)="addingTag = true" *ngIf="!addingTag" class="btn-add-tag" type="button"></button>
+            <div *ngIf="addingTag" class="adding-tag">
+              <input #tagName class="input-add-tag">
+              <button (click)="addTag(tagName)" class="btn-add-tag" type="button"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-description">
+        <span class="head">Tell others about you campaign</span>
+        <textarea class="desc" name="description" ngModel></textarea>
+      </div>
+
+      <div class="campaign-video-link">
+        <span class="head">Link to campaign’s video</span>
+        <input class="input-text input-campaign-video-link" name="video-link" ngModel>
+      </div>
+
+      <div class="campaign-amount-aim">
+        <span class="head">Amount of money your campaign needs</span>
+
+        <div class="input-wrapper">
+          <input class="input-text input-campaign-amount-aim" name="amount-aim" ngModel>
+          <div class="icon">$</div>
+        </div>
+      </div>
+
+      <div class="campaign-bonuses">
+        <span class="head">Bonuses your campaign will give</span>
+        <div class="bonuses">
+          <div class="bonus-add">
+            <div class="bonus-wrapper">
+              <div class="amount-input add-input">
+                <input #inputAmount class="input-bonus" type="text">
+                <span class="icon">$</span>
+              </div>
+              <div class="description-input add-input">
+                <input #inputDesc class="input-bonus" type="text">
+              </div>
+            </div>
+            <button (click)="addBonus(inputDesc, inputAmount)" class="btn-bonus-add" type="button"></button>
+          </div>
+          <div *ngFor="let bonus of bonuses" class="bonus">
+            <span class="amount-info">{{bonus.amount}}</span>
+            <span class="desc-info">{{bonus.description}}</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-create">
+        Create!
+      </button>
+    </form>
+  </div>
+</modal>

@@ -32,7 +32,7 @@
       <div class="line">
         <h3 class="prefix-title">My Campaigns:</h3>
         <div class="actions">
-          <button class="create">Create new campaign</button>
+          <button class="create" (click)="modalsService.open(modalsService.modals.CREATE_CAMPAIGN_MODAL)">Create new campaign</button>
           <button class="filter">Filter</button>
         </div>
       </div>
