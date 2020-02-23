@@ -35,7 +35,7 @@ export class RegistrationModalComponent {
     const ERRORS = [400, 401, 500];
 
     if(this.repeatPassword == this.password) {
-      await this.userService.register({username: this.username, password: this.password, campaigns: []});
+      await this.userService.register({username: this.username, name: this.name, password: this.password, campaigns: []});
 
       if(ERRORS.indexOf(this.userService.errors) === -1) {
         this.cbClose.emit();
