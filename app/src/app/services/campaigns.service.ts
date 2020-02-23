@@ -52,7 +52,7 @@ export class CampaignsService {
     );
   }
 
-  registerCampaign(campaign) {
+  registerCampaign(campaign, bonuses) {
     console.log(campaign);
     console.log(this.userService.token);
 
@@ -64,7 +64,16 @@ export class CampaignsService {
     };
 
     this.http.post('http://127.0.0.1:8000/campaigns/', JSON.stringify(campaign), httpOptions).subscribe(
-      (data) => console.log(data),
+      (data) => {
+        console.log(data);
+        /*for(let i = 0; i < bonuses.length; i+=1) {
+          this.http.post(`http://127.0.0.1:8000/campaigns/${data['id']}/addBonus/`, JSON.stringify(bonuses[i]),
+            httpOptions).subscribe(
+            (data) => console.log(data),
+            error => console.log(error)
+          )
+        }*/
+      },
       error => console.log(error)
     )
   }

@@ -35,7 +35,7 @@ export class CreateCampaignModalComponent implements OnInit, ICampaign  {
     this.amountMoney = +values['amount-aim'];
     this.campaignsService.registerCampaign(
       { name: this.name, theme: this.theme, about: this.about,
-        youtube_link: this.videoLink, goal_amount_of_money: this.amountMoney}
+        youtube_link: this.videoLink, goal_amount_of_money: this.amountMoney}, this.bonuses
     );
     this.cbClose.emit();
   }
@@ -55,13 +55,13 @@ export class CreateCampaignModalComponent implements OnInit, ICampaign  {
   }
 
   addBonus(inputDesc, inputAmount) {
-    const description = inputDesc.value;
+    const about = inputDesc.value;
     const amount = inputAmount.value;
 
-    if(description.length && amount.length) {
+    if(about.length && amount.length) {
       this.bonuses.push({
-        amount: +amount,
-        description
+        value: +amount,
+        about: about
       });
       inputDesc.value = '';
       inputAmount.value = '';
