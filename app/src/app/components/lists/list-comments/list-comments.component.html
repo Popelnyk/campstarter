@@ -1,0 +1,20 @@
+<div class="list">
+  <div *ngFor="let data of comments" class="item">
+    <div class="user-data">
+      <div class="photo"></div>
+      <div class="info">
+        <div class="name">{{data.owner}}</div>
+        <div class="date">{{data.creationDate}}</div>
+      </div>
+    </div>
+    <div class="text">
+      {{data.text}}
+    </div>
+    <div class="status-comment">
+      <div class="likes">
+        <span>{{data.likes}}</span>
+        <svg-likes></svg-likes>
+      </div>
+    </div>
+  </div>
+</div>

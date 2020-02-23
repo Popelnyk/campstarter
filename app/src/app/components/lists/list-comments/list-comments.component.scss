@@ -1,0 +1,53 @@
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  border-bottom: solid 1px #0A1B33;
+  padding: 20px 40px;
+}
+
+.user-data {
+  display: flex;
+  .photo {
+    width: 30px;
+    height: 30px;
+    background: #0A1B33;
+    border-radius: 50%;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+  }
+  .name {
+    font-weight: bold;
+    font-size: 15px;
+  }
+  .date {
+    font-size: 13px;
+    color: #2A293E;
+  }
+}
+
+.text {
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.status-comment {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  .likes {
+    display: inline-flex;
+    align-items: center;
+    color:#15FF65;
+    height: 24px;
+    span {
+      display: block;
+      margin-right: 10px;
+    }
+  }
+}
