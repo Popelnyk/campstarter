@@ -36,13 +36,14 @@ export class UserProfileComponent implements OnInit{
   }
 
   profileUpdate(id) {
-    this.http.get(`http://127.0.0.1:8000/users/${parseInt(id)-1}/`).subscribe(
+    this.http.get(`http://127.0.0.1:8000/users/${id}/`).subscribe(
       (data) => {
         this.name = data['name'];
         this.hometown = data['hometown'];
         this.work = data['work'];
         this.hobbies = data['hobbies'];
         this.listOfCampaigns = data['campaigns'];
+        console.log(data)
       }
     )
   }
