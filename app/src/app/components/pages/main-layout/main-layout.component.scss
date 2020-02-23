@@ -8,17 +8,19 @@
   .recently-item {
     display: inline-flex;
     flex-direction: column;
-    width: 35%;
+    width: 30%;
+
+    margin: 10px 0;
     img {
       width: 100%;
     }
-    h5 {
+    .recently-item-title {
       font-size: 25px;
       color: #000000;
       margin: 5px 0;
       font-weight: bold;
     }
-    h6 {
+    .recently-item-link {
       font-size: 18px;
       color: #514C54;
     }
