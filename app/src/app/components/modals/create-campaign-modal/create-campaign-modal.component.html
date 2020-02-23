@@ -72,8 +72,8 @@
             <button (click)="addBonus(inputDesc, inputAmount)" class="btn-bonus-add" type="button"></button>
           </div>
           <div *ngFor="let bonus of bonuses" class="bonus">
-            <span class="amount-info">{{bonus.amount}}</span>
-            <span class="desc-info">{{bonus.description}}</span>
+            <span class="amount-info">{{bonus.value}}</span>
+            <span class="desc-info">{{bonus.about}}</span>
           </div>
         </div>
       </div>
