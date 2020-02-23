@@ -39,10 +39,6 @@ export class UserProfileComponent implements OnInit{
       this.id = params.id;
       this.profileUpdate(this.id);
     });
-
-    if(this.username === null) {
-      await this.router.navigate(['/404']);
-    }
   }
 
   async profileUpdate(id) {
@@ -55,6 +51,9 @@ export class UserProfileComponent implements OnInit{
         this.listOfCampaigns = data['campaigns'];
         this.money = data['money'];
         this.username = data['username'];
+      },
+      error => {
+        this.router.navigate(['/404']);
       }
     )
   }

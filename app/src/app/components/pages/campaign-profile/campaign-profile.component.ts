@@ -50,9 +50,6 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
     await this.updateComments(this.id);
     await this.updateNews(this.id);
 
-    if(this.ownerId === null) {
-       await this.router.navigate(['/404']);
-    }
   }
 
   updateComments(id) {
@@ -73,8 +70,8 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
     )
   }
 
-  updateCampaign(id) {
-    this.http.get(`http://127.0.0.1:8000/campaigns/${id}/`).subscribe(
+  async updateCampaign(id) {
+    await this.http.get(`http://127.0.0.1:8000/campaigns/${id}/`).subscribe(
       (data) => {
         this.name = data['name'];
         this.theme = data['theme'];
@@ -88,7 +85,9 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
         if(data['bonuses'])
           this.bonuses = JSON.parse(data['bonuses']);
       },
-      error => console.log(error)
+      error => {
+          this.router.navigate(['/404']);
+      }
     );
   }
 
