@@ -132,9 +132,12 @@
           &:nth-child(2) {
             .list-campaigns {
               flex-direction: column;
+              width: 100%;
+              margin-top: 15px;
             }
             .campaign {
               display: flex;
+              width: 100%;
               position: relative;
               margin: 15px 0;
               .photo {

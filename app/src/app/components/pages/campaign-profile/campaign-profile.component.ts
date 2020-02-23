@@ -44,12 +44,10 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
   async ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {
       this.id = params.id;
+      this.updateCampaign(this.id);
+      this.updateComments(this.id);
+      this.updateNews(this.id);
     });
-
-    await this.updateCampaign(this.id);
-    await this.updateComments(this.id);
-    await this.updateNews(this.id);
-
   }
 
   updateComments(id) {
