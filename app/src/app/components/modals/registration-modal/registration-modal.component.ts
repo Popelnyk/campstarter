@@ -13,7 +13,6 @@ export const REGISTRATION_MODAL = 'REGISTRATION_MODAL';
 })
 export class RegistrationModalComponent {
 
-  @Input() open;
   @Output() cbClose: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(private userService: UserService, private http: HttpClient) {}

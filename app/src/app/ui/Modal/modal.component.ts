@@ -8,7 +8,6 @@ import {Component, Input, OnInit, OnDestroy} from '@angular/core';
 export class ModalComponent implements OnInit, OnDestroy {
 
   @Input() classNames;
-  @Input() isOpen;
   ngOnInit(): void {
     document.body.style.overflow = "hidden";
   }

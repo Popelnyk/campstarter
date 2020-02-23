@@ -32,7 +32,7 @@
       <div class="line">
         <h3 class="prefix-title">My Campaigns:</h3>
         <div class="actions">
-          <button *ngIf="isOwner()" class="create">Create new campaign</button>
+          <button class="create" *ngIf="isOwner()" (click)="modalsService.open(modalsService.modals.CREATE_CAMPAIGN_MODAL)">Create new campaign</button>
           <button class="filter">Filter</button>
         </div>
       </div>

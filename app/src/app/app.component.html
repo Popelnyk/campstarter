@@ -1,10 +1,11 @@
 <navigation-bar
-  (openAuthModal)="open(modals.AUTH_MODAL)"
-  (openRegistrationModal)="open(modals.REGISTRATION_MODAL)"
+  (openAuthModal)="openModal(modalsService.modals.AUTH_MODAL)"
+  (openRegistrationModal)="openModal(modalsService.modals.REGISTRATION_MODAL)"
 >
 </navigation-bar>
 <div class="shiftNavigation">
-  <auth-modal *ngIf="openedModals[modals.AUTH_MODAL]" [open]="openedModals[modals.AUTH_MODAL]" (cbClose)="close(modals.AUTH_MODAL)"></auth-modal>
-  <registration-modal *ngIf="openedModals[modals.REGISTRATION_MODAL]" [open]="openedModals[modals.REGISTRATION_MODAL]" (cbClose)="close(modals.REGISTRATION_MODAL)"></registration-modal>
+  <auth-modal *ngIf="modalsService.openedModals[modalsService.modals.AUTH_MODAL]" (cbClose)="closeModal(modalsService.modals.AUTH_MODAL)"></auth-modal>
+  <registration-modal *ngIf="modalsService.openedModals[modalsService.modals.REGISTRATION_MODAL]"  (cbClose)="closeModal(modalsService.modals.REGISTRATION_MODAL)"></registration-modal>
+  <create-campaign-modal *ngIf="modalsService.openedModals[modalsService.modals.CREATE_CAMPAIGN_MODAL]" (cbClose)="closeModal(modalsService.modals.CREATE_CAMPAIGN_MODAL)"></create-campaign-modal>
   <router-outlet></router-outlet>
 </div>

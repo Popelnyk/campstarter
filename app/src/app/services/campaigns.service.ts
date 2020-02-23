@@ -1,18 +1,28 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
-interface ICampaign {
-  name?: string;
-  about?: string;
+export interface ICampaignBonus {
+  amount: number,
+  description: string;
+}
+
+export interface ICampaign {
+  name: string;
+  description: string;
+  theme: string,
+  tags: Array<string>;
+  videoLink:string;
+  amountMoney: number;
+  bonuses: Array<ICampaignBonus>;
 }
 
 
 @Injectable()
 export class CampaignsService {
 
+  public themes = ['Game', 'IT', 'Arts', 'Education', 'Electronics'];
 
-
-  public bestCampaign: ICampaign = {};
+  public bestCampaign: ICampaign = null;
   public listOfCampaigns: Array<ICampaign> = [];
 
   constructor(private http: HttpClient) {

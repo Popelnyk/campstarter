@@ -18,6 +18,11 @@ import {UserProfileComponent} from "./components/pages/user-profile/user-profile
 import {MainLayoutComponent} from "./components/pages/main-layout/main-layout.component";
 import {CampaignsService} from "./services/campaigns.service";
 import {ButtonDirective} from "./directives/button.directive";
+import { CreateCampaignModalComponent } from './components/modals/create-campaign-modal/create-campaign-modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
+import {MatSliderModule} from "@angular/material/slider";
+import {ModalsService} from "./services/modals.service";
 
 
 @NgModule({
@@ -30,15 +35,17 @@ import {ButtonDirective} from "./directives/button.directive";
     RegistrationModalComponent,
     UserProfileComponent,
     MainLayoutComponent,
-    ButtonDirective
+    ButtonDirective,
+    CreateCampaignModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
   ],
-  providers: [UserService, CampaignsService],
+  providers: [UserService, CampaignsService, ModalsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import {Component, Input, Output} from '@angular/core';
+import {Component, Output} from '@angular/core';
 
 import {EventEmitter} from "@angular/core";
 import {UserService} from 'src/app/services/user.service';
@@ -14,8 +14,6 @@ export class AuthModalComponent {
 
   login = '';
   password = '';
-
-  @Input() open;
 
   @Output() cbClose: EventEmitter<void> = new EventEmitter<void>();
 
