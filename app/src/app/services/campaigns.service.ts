@@ -63,16 +63,17 @@ export class CampaignsService {
       })
     };
 
-    this.http.post('http://127.0.0.1:8000/campaigns/', JSON.stringify(campaign), httpOptions).subscribe(
+    this.http.post('http://127.0.0.1:8000/campaigns/', JSON.stringify(campaign), httpOptions).toPromise().then(
       (data) => {
-        console.log(data);
-        /*for(let i = 0; i < bonuses.length; i+=1) {
+        for(let i = 0; i < bonuses.length; i+=1) {
+          bonuses[i]['campaign'] = data['id'];
+          console.log(bonuses);
           this.http.post(`http://127.0.0.1:8000/campaigns/${data['id']}/addBonus/`, JSON.stringify(bonuses[i]),
             httpOptions).subscribe(
             (data) => console.log(data),
             error => console.log(error)
           )
-        }*/
+        }
       },
       error => console.log(error)
     )

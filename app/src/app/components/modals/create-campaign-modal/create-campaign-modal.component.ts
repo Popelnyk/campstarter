@@ -61,7 +61,8 @@ export class CreateCampaignModalComponent implements OnInit, ICampaign  {
     if(about.length && amount.length) {
       this.bonuses.push({
         value: +amount,
-        about: about
+        about: about,
+        campaign: 0,
       });
       inputDesc.value = '';
       inputAmount.value = '';
