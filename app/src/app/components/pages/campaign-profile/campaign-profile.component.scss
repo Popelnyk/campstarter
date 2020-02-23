@@ -140,6 +140,7 @@
 }
 
 .tabs {
+  position: relative;
   display: flex;
   width: 100%;
   justify-content: center;
@@ -153,12 +154,23 @@
       border-bottom: solid 2px #975BFF;
     }
   }
+  .postNew {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #975BFF;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+  }
 }
 
 .add-comment {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 15px;
   input {
     border-bottom: solid 1px #333333;
   }

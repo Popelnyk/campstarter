@@ -4,6 +4,7 @@ import {Subscription} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {ICampaign, ICampaignBonus} from "../../../services/campaigns.service";
 import {UserService} from "../../../services/user.service";
+import {ModalsService} from "../../../services/modals.service";
 
 
 @Component({
@@ -39,7 +40,7 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
   comments: any = [];
 
   private routeSub: Subscription;
-  constructor(private route: ActivatedRoute, private http: HttpClient, public userService: UserService) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient, public userService: UserService, public modalsService: ModalsService) { }
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
