@@ -1,0 +1,20 @@
+<modal>
+  <div class="modal">
+
+    <span (click)="cbClose.emit()" class="closeIcon">
+      <img alt="close" src="https://i.ya-webdesign.com/images/close-icon-png-3.png">
+    </span>
+
+    <form (ngSubmit)="onSubmit(form)" class="form" #form="ngForm">
+      <div class="input-title">
+        <div class="head">
+          <span>New's title</span>
+        </div>
+        <input ngModel name="title">
+      </div>
+      <textarea class="desc" name="description" ngModel></textarea>
+      <button>Post</button>
+    </form>
+  </div>
+</modal>
+
