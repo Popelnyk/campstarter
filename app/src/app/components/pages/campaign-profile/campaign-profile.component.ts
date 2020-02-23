@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {ICampaign, ICampaignBonus} from "../../../services/campaigns.service";
 import {UserService} from "../../../services/user.service";
 import {ModalsService} from "../../../services/modals.service";
-
 
 @Component({
   selector: 'app-campaign-profile',
@@ -18,7 +17,7 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
   name:string = '';
   about:string = '';
   owner:string = '';
-  ownerId: string | number = '';
+  ownerId: string | number = null;
   theme:string = '';
   videoLink:string = '';
   goalAmount:number = null;
@@ -40,16 +39,17 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
   comments: any = [];
 
   private routeSub: Subscription;
-  constructor(private route: ActivatedRoute, private http: HttpClient, public userService: UserService, public modalsService: ModalsService) { }
+  constructor(public router: Router,private route: ActivatedRoute, private http: HttpClient, public userService: UserService, public modalsService: ModalsService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {
       this.id = params.id;
-      this.updateCampaign(this.id);
-      this.updateComments(this.id);
-      this.updateNews(this.id);
     });
-    console.log(this.id)
+
+    await this.updateCampaign(this.id);
+    await this.updateComments(this.id);
+    await this.updateNews(this.id);
+
   }
 
   updateComments(id) {
@@ -70,8 +70,8 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
     )
   }
 
-  updateCampaign(id) {
-    this.http.get(`http://127.0.0.1:8000/campaigns/${id}/`).subscribe(
+  async updateCampaign(id) {
+    await this.http.get(`http://127.0.0.1:8000/campaigns/${id}/`).subscribe(
       (data) => {
         this.name = data['name'];
         this.theme = data['theme'];
@@ -85,7 +85,9 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
         if(data['bonuses'])
           this.bonuses = JSON.parse(data['bonuses']);
       },
-      error => console.log(error)
+      error => {
+          this.router.navigate(['/404']);
+      }
     );
   }
 
