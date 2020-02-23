@@ -47,7 +47,8 @@ export class UserProfileComponent implements OnInit{
         this.hobbies = data['hobbies'];
         this.listOfCampaigns = data['campaigns'];
         this.money = data['money'];
-      }
+      },
+      error => console.log(error)
     )
   }
 
