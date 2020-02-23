@@ -36,7 +36,7 @@ export class UserProfileComponent implements OnInit{
   }
 
   profileUpdate(id) {
-    this.http.get(`http://127.0.0.1:8000/users/${id}/`).subscribe(
+    this.http.get(`http://127.0.0.1:8000/users/${parseInt(id)-1}/`).subscribe(
       (data) => {
         this.name = data['name'];
         this.hometown = data['hometown'];
