@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserService} from "./user.service";
-import {BehaviorSubject, Observable} from "rxjs";
 
 export interface ICampaignBonus {
   value: number,

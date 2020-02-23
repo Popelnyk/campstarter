@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
-import {INews} from "../../lists/list-news/list-news.component";
-import {IComment} from "../../lists/list-comments/list-comments.component";
 import {HttpClient} from "@angular/common/http";
 import {ICampaignBonus} from "../../../services/campaigns.service";
 
@@ -79,6 +77,7 @@ export class CampaignProfileComponent implements OnInit {
         this.goalAmount = parseInt(data['goal_amount_of_money']);
         this.curAmount = parseInt(data['current_amount_of_money']);
         this.activeStar = parseInt(data['total_rating']);
+        this.id = data['owner_id'];
         if(data['bonuses'])
           this.bonuses = JSON.parse(data['bonuses']);
       },

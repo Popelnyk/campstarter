@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="floor">
     <div class="campaign-profile">
       <div class="header">
@@ -10,7 +9,7 @@
           </div>
         </div>
         <div class="user">
-          <div class="photo"></div>
+          <a [routerLink]="'/campaigns/' + id" class="photo"></a>
           <div class="owner-name">
             {{owner}}
           </div>
