@@ -154,3 +154,19 @@
     }
   }
 }
+
+.add-comment {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  input {
+    border-bottom: solid 1px #333333;
+  }
+  button {
+    background: #975BFF;
+    font-weight: bold;
+    margin-left: 10px;
+    color: #ffffff;
+    padding: 7px 16px;
+  }
+}

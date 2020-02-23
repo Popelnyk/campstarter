@@ -57,4 +57,9 @@
     <app-list-comments [comments]="comments" *ngSwitchCase="'COMMENTS'"></app-list-comments>
   </div>
 
+  <div class="add-comment">
+    <input #inputAddComment>
+    <button type="button" (click)="onPostComment(inputAddComment.value)">Post</button>
+  </div>
+
 </div>
