@@ -16,6 +16,7 @@ export interface ICampaign {
   videoLink:string;
   amountMoney: number;
   bonuses: Array<ICampaignBonus>;
+  id: string | number;
 }
 
 

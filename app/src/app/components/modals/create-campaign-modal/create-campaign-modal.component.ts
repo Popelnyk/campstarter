@@ -20,6 +20,7 @@ export class CreateCampaignModalComponent implements OnInit, ICampaign  {
   videoLink = '';
   amountMoney = 0;
   bonuses = [];
+  id = '';
 
   addingTag = false;
 

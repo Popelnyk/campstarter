@@ -6,7 +6,7 @@ import {CampaignsService} from "../../../services/campaigns.service";
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss']
 })
-export class MainLayoutComponent implements OnInit{
+export class MainLayoutComponent implements OnInit {
 
 
   constructor(public campaignsService: CampaignsService) {
