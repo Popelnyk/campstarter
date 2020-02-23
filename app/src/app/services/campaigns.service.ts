@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {UserService} from "./user.service";
+import {BehaviorSubject, Observable} from "rxjs";
 
 export interface ICampaignBonus {
   amount: number,
@@ -8,7 +10,7 @@ export interface ICampaignBonus {
 
 export interface ICampaign {
   name: string;
-  description: string;
+  about: string;
   theme: string,
   tags: Array<string>;
   videoLink:string;
@@ -25,9 +27,8 @@ export class CampaignsService {
   public bestCampaign: ICampaign = null;
   public listOfCampaigns: Array<ICampaign> = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userService: UserService) {
   }
-
 
   setBestCampaign(campaign) {
     this.bestCampaign = campaign;
@@ -51,5 +52,21 @@ export class CampaignsService {
     );
   }
 
+  registerCampaign(campaign) {
+    console.log(campaign);
+    console.log(this.userService.token);
+
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.userService.token}`
+      })
+    };
+
+    this.http.post('http://127.0.0.1:8000/campaigns/', JSON.stringify(campaign), httpOptions).subscribe(
+      (data) => console.log(data),
+      error => console.log(error)
+    )
+  }
 
 }
