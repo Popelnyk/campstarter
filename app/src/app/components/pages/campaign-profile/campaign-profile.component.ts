@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {ICampaignBonus} from "../../../services/campaigns.service";
+import {ICampaign, ICampaignBonus} from "../../../services/campaigns.service";
 
 
 @Component({
@@ -10,16 +10,18 @@ import {ICampaignBonus} from "../../../services/campaigns.service";
   templateUrl: './campaign-profile.component.html',
   styleUrls: ['./campaign-profile.component.scss']
 })
-export class CampaignProfileComponent implements OnInit {
+export class CampaignProfileComponent implements OnInit, ICampaign {
 
   id:number = null;
   name:string = '';
   about:string = '';
   owner:string = '';
+  ownerId: string | number;
   theme:string = '';
   videoLink:string = '';
   goalAmount:number = null;
   curAmount:number = null;
+  tags: Array<string> = [];
   bonuses:Array<ICampaignBonus> = [];
 
 
@@ -77,7 +79,7 @@ export class CampaignProfileComponent implements OnInit {
         this.goalAmount = parseInt(data['goal_amount_of_money']);
         this.curAmount = parseInt(data['current_amount_of_money']);
         this.activeStar = parseInt(data['total_rating']);
-        this.id = data['owner_id'];
+        this.ownerId = data['owner_id'];
         if(data['bonuses'])
           this.bonuses = JSON.parse(data['bonuses']);
       },

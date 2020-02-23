@@ -13,8 +13,10 @@ export interface ICampaign {
   theme: string,
   tags: Array<string>;
   videoLink:string;
-  amountMoney: number;
+  goalAmount: number;
+  curAmount: number;
   bonuses: Array<ICampaignBonus>;
+  ownerId: string | number;
   id: string | number;
 }
 
