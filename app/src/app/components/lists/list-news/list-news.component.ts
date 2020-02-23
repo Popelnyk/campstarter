@@ -3,7 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export interface INews {
   title: string,
   about: string,
-  creation_date: string
+  creation_date: string,
+  id: string | number;
 }
 
 @Component({

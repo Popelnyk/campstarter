@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {ICampaign, ICampaignBonus} from "../../../services/campaigns.service";
+import {UserService} from "../../../services/user.service";
 
 
 @Component({
@@ -38,7 +39,7 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
   comments: any = [];
 
   private routeSub: Subscription;
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient, public userService: UserService) { }
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
@@ -93,6 +94,14 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
 
   onSelectStar(star) {
     this.activeStar = star;
+  }
+
+  onPostComment(message) {
+    const data = {
+      message,
+      userId: this.userService.userId,
+      date: new Date
+    };
   }
 
   //

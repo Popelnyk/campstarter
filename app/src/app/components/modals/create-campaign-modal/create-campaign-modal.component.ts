@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {CampaignsService, ICampaign} from "../../../services/campaigns.service";
+import {CampaignsService, ICampaign, ICampaignBonus} from "../../../services/campaigns.service";
 
 export const CREATE_CAMPAIGN_MODAL = "CREATE_CAMPAIGN_MODAL";
 
@@ -21,6 +21,9 @@ export class CreateCampaignModalComponent implements OnInit, ICampaign  {
   amountMoney = 0;
   bonuses = [];
   id = '';
+  goalAmount: number = null;
+  curAmount: number = null;
+  ownerId: string | number = null;
 
   addingTag = false;
 
