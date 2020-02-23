@@ -94,4 +94,5 @@ export class CampaignProfileComponent implements OnInit {
     this.activeStar = star;
   }
 
+  //
 }
