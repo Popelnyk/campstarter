@@ -37,18 +37,18 @@
         </div>
       </div>
       <div class="line">
-        <div class="list-campaigns">
+        <div class="list-campaigns" *ngFor="let item of listOfCampaigns">
           <div class="campaign">
             <div class="icon-delete"></div>
             <div class="photo"></div>
             <div class="info">
               <div class="title">
-                <h3>Name of campaign</h3>
+                <h3>{{item.name}}</h3>
                 <button *ngIf="isOwner()" class="edit-campaign">edit</button>
               </div>
               <div class="info">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias aliquid aspernatur assumenda dicta eos fuga fugiat laborum necessitatibus quae quisquam quod rem reprehenderit sint velit, vero voluptate. Qui, vero.
+                   {{item.about}}
                 </p>
               </div>
             </div>
