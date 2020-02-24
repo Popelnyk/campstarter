@@ -65,16 +65,21 @@
 
 .campaign-profile {
   min-width: 400px;
-  max-width: 1000px;
+  max-width: 800px;
   width: 100%;
 
   .header {
+    max-width: 720px;
     display: flex;
     justify-content: space-between;
     .title {
+      width: 100%;
       h1 {
         font-size: 40px;
         font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .stars {
         margin-top: 10px;
@@ -91,6 +96,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 80px;
       .photo {
         width: 80px;
         height: 80px;
@@ -127,7 +133,7 @@
 }
 
 .container {
-  width: 1280px;
+  width: 1100px;
   margin: 0 auto;
   padding: 15px 80px;
 }

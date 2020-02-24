@@ -55,12 +55,13 @@
 
   <div [ngSwitch]="currentTab" class="list">
     <app-list-news [news]="news" *ngSwitchCase="'NEWS'"></app-list-news>
-    <app-list-comments [comments]="comments" *ngSwitchCase="'COMMENTS'"></app-list-comments>
-  </div>
-
-  <div class="add-comment">
-    <input #inputAddComment>
-    <button type="button" (click)="onPostComment(inputAddComment.value)">Post</button>
+    <div *ngSwitchCase="'COMMENTS'">
+      <app-list-comments [comments]="comments"></app-list-comments>
+      <div class="add-comment">
+        <input #inputAddComment>
+        <button type="button" (click)="onPostComment(inputAddComment.value)">Post</button>
+      </div>
+    </div>
   </div>
 
 </div>
