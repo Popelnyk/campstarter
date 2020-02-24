@@ -29,8 +29,8 @@ export class ListCommentsComponent {
     })
   };
 
-  onLike(id) {
-    this.http.post(`http://127.0.0.1:8000/comments/${id}/like/`, JSON.stringify({comment:id}) ,
+  async onLike(id) {
+    await this.http.post(`http://127.0.0.1:8000/comments/${id}/like/`, JSON.stringify({comment:id}) ,
       this.httpOptions).subscribe(
       data => console.log(data),
       error => console.log(error)

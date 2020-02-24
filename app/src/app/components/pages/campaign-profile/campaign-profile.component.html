@@ -34,13 +34,13 @@
       <span class="title">Received</span>
       <span class="value">{{curAmount}}$</span>
     </span>
+      <div class="title">Bonuses list</div>
       <div class="bonuses-list" *ngFor="let bonus of bonuses">
-        <div class="title">Bonuses list</div>
         <div class="line">
           donate {{bonus.value}}$ and receive {{bonus.about}}
         </div>
       </div>
-      <button class="btn donate" *ngIf="userService.token" (click)="onDonate()">
+      <button class="btn donate" *ngIf="userService.token && notFinished()" (click)="onDonate()">
         Donate
       </button>
     </div>

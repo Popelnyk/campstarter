@@ -123,8 +123,8 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
 
   }
 
-  block(id) {
-    return this.userService.userId == id;
+  notFinished() {
+    return !(this.curAmount >= this.goalAmount);
   }
 
   onPostComment(message) {
