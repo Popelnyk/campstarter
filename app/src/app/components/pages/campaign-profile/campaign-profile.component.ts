@@ -57,9 +57,6 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
       this.updateCampaign(this.id);
       this.updateComments(this.id);
       this.updateNews(this.id);
-      if(!this.block(this.id)) {
-        this.isBlockedStar = false;
-      }
     });
   }
 
@@ -110,16 +107,10 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
     if(this.isBlockedStar) return;
     this.http.post(`http://127.0.0.1:8000/campaigns/${this.id}/rating/`, JSON.stringify({value:star}),
       this.httpOptions).subscribe(
-      (data) => {
-        this.isBlockedStar = true;
-      },
+      (data) => console.log(data),
       error => console.log(error)
     );
-    this.activeStar = star;
-  }
-
-  block(id) {
-    return this.userService.userId == id;
+    this.activeStar = star
   }
 
   onPostComment(message) {
