@@ -29,7 +29,7 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
 
   stars = [1, 2, 3, 4, 5];
 
-  activeStar = 2;
+  activeStar = 0;
 
   tabs = ["NEWS", "COMMENTS"];
 
@@ -57,9 +57,16 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
       this.updateCampaign(this.id);
       this.updateComments(this.id);
       this.updateNews(this.id);
-      if(!this.block(this.id)) {
-        this.isBlockedStar = false;
-      }
+
+      this.http.post(`http://127.0.0.1:8000/campaigns/${this.id}/rating/`, JSON.stringify({value:this.activeStar}),
+        this.httpOptions).subscribe(
+        (data) => {
+          this.isBlockedStar = false;
+        },
+        error => {
+          this.isBlockedStar = true;
+        }
+      );
     });
   }
 
@@ -92,6 +99,7 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
         this.goalAmount = parseInt(data['goal_amount_of_money']);
         this.curAmount = parseInt(data['current_amount_of_money']);
         this.activeStar = parseInt(data['total_rating']);
+        console.log(this.activeStar);
         this.ownerId = data['owner_id'];
         if(data['bonuses'])
           this.bonuses = JSON.parse(data['bonuses']);
@@ -108,13 +116,12 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
 
   onSelectStar(star) {
     if(this.isBlockedStar) return;
-    this.http.post(`http://127.0.0.1:8000/campaigns/${this.id}/rating/`, JSON.stringify({value:star}),
-      this.httpOptions).subscribe(
-      (data) => {
-        this.isBlockedStar = true;
-      },
-      error => console.log(error)
-    );
+
+    console.log(star);
+
+    this.http.post(`http://127.0.0.1:8000/campaigns/${this.id}/rating/`, JSON.stringify({value: star}), this.httpOptions);
+
+    this.isBlockedStar = true;
     this.activeStar = star;
   }
 
