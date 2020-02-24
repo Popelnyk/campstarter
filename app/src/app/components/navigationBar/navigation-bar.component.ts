@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from "@angular/core";
 import {UserService} from "../../services/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'navigation-bar',
@@ -13,7 +14,7 @@ export class NavigationBarComponent implements OnInit{
   @Output() openAuthModal: EventEmitter<void> = new EventEmitter<void>();
   @Output() openRegistrationModal: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService, public router: Router) { }
 
   ngOnInit() {
     this.user = {
@@ -27,8 +28,9 @@ export class NavigationBarComponent implements OnInit{
     // this.userService.login({'username': this.user.username, 'password': this.user.password});
   }
 
-  logout() {
-    this.userService.logout();
+  async logout() {
+    await this.userService.logout();
+    await this.router.navigate(['/']);
   }
 
   join() {

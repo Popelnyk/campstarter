@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
@@ -12,7 +12,7 @@ import {DONATE_MODAL} from "../../modals/donate-modal/donate-modal.component";
   templateUrl: './campaign-profile.component.html',
   styleUrls: ['./campaign-profile.component.scss']
 })
-export class CampaignProfileComponent implements OnInit, ICampaign {
+export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
 
   id:number = null;
   name:string = '';
@@ -58,6 +58,10 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
       this.updateComments(this.id);
       this.updateNews(this.id);
     });
+  }
+
+  ngOnChanges(): void {
+    console.log('update');
   }
 
   updateComments(id) {
@@ -127,6 +131,10 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
       userId: this.userService.userId,
       date: new Date
     };
+  }
+
+  onPostNew() {
+    this.modalsService.open(this.modalsService.modals.POST_NEW_MODAL, {id: this.id})
   }
 
   onDonate() {

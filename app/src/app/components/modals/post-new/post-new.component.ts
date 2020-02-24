@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 export const POST_NEW_MODAL = 'POST_NEW_MODAL';
 
@@ -11,15 +11,20 @@ export class PostNewModalComponent  {
 
   description = '';
   title = '';
+  id = '';
 
   @Output() cbClose: EventEmitter<void> = new EventEmitter<void>();
+  @Input() data;
 
   constructor() { }
 
   onSubmit({form: {value: values}}) {
-
+    console.log(this.data);
+    this.id = this.data.id;
     this.description = values.description;
     this.title = values.title;
   }
+
+
 
 }
