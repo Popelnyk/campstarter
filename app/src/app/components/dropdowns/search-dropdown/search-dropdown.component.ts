@@ -17,14 +17,12 @@ export class SearchDropdownComponent implements OnChanges{
   @Input() searchValue:string;
   @Output() onChoose: EventEmitter<void> = new EventEmitter<void>();
 
-  list: Array<IList> = [];
+  list:any;
 
   constructor(private http:HttpClient) {}
 
-  async ngOnChanges(changes: SimpleChanges): void {
+  async ngOnChanges(changes: SimpleChanges) {
     if(changes['searchValue'].isFirstChange()) return;
-
-    console.log(changes['searchValue']);
 
     await this.http.get(`http://127.0.0.1:8000/campaigns/?search=${changes['searchValue']['currentValue']}`).subscribe(
       data => this.list = data,
