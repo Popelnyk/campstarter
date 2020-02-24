@@ -16,6 +16,13 @@ export class NavigationBarComponent implements OnInit{
 
   constructor(public userService: UserService, public router: Router) { }
 
+  searchValue: string;
+
+
+  onChangeSearch(value) {
+    this.searchValue = value;
+  }
+
   ngOnInit() {
     this.user = {
       username: 'remmidemmi',
@@ -37,5 +44,8 @@ export class NavigationBarComponent implements OnInit{
     this.openRegistrationModal.emit();
   }
 
+  onChoose() {
+    this.searchValue = '';
+  }
 
 }

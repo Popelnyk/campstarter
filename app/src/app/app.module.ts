@@ -28,6 +28,7 @@ import { StarIconComponent } from './icons/Star/star-icon.component';
 import { PostNewModalComponent } from './components/modals/post-new/post-new.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { DonateModalComponent } from './components/modals/donate-modal/donate-modal.component';
+import { SearchDropdownComponent } from './components/dropdowns/search-dropdown/search-dropdown.component';
 
 
 
@@ -51,6 +52,7 @@ import { DonateModalComponent } from './components/modals/donate-modal/donate-mo
     PostNewModalComponent,
     NotFoundComponent,
     DonateModalComponent,
+    SearchDropdownComponent,
   ],
   imports: [
     BrowserModule,

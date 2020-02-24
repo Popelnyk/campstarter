@@ -4,9 +4,11 @@
   </div>
 
   <label class="search">
-    <input class="search-input" type="text" placeholder="Search...">
+    <input class="search-input" [(ngModel)]="searchValue" placeholder="Search..." (ngModelChange)="onChangeSearch($event)">
     <svg-search></svg-search>
+    <search-dropdown (onChoose)="onChoose()" *ngIf="searchValue && searchValue.length" [searchValue]="searchValue"></search-dropdown>
   </label>
+
   <div class="auth">
 
     <div *ngIf="!userService.isLogin" class="login">
