@@ -133,5 +133,9 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
     this.modalsService.open(DONATE_MODAL, {id: this.id});
   }
 
+  isOwner() {
+    return this.ownerId == this.userService.userId
+  }
+
   //
 }
