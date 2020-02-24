@@ -50,6 +50,7 @@ export class UserProfileComponent implements OnInit{
         this.work = data['work'];
         this.hobbies = data['hobbies'];
         this.listOfCampaigns = data['campaigns'];
+        this.listOfCampaigns = this.listOfCampaigns.reverse();
         this.money = data['money'];
         this.username = data['username'];
       },

@@ -68,6 +68,7 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
     this.http.get(`http://127.0.0.1:8000/campaigns/${id}/comments/`).subscribe(
       (data) => {
         this.comments = data;
+        this.comments = this.comments.reverse()
       },
       error => console.log(error)
     )
@@ -77,6 +78,7 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
     this.http.get(`http://127.0.0.1:8000/campaigns/${id}/news/`).subscribe(
       (data) => {
         this.news = data;
+        this.news = this.news.reverse()
       },
       error => console.log(error)
     )
@@ -131,6 +133,15 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
       userId: this.userService.userId,
       date: new Date
     };
+
+    this.http.post(`http://127.0.0.1:8000/campaigns/${this.id}/comments/`,
+      JSON.stringify({text:data.message, campaign: this.id}), this.httpOptions).subscribe(
+        data => {
+          console.log(data);
+          window.location.reload();
+          },
+      error => console.log(error)
+    )
   }
 
   onPostNew() {
