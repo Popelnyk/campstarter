@@ -12,6 +12,7 @@
     align-items: center;
     border: solid 1px rgba(0, 0, 0, 0.2);
     padding: 15px 0;
+    height: min-content;
 
     .floor {
       display: flex;
@@ -175,9 +176,10 @@
               }
               .title {
                 display: flex;
-                h3 {
+                a {
                   font-weight: bold;
                   font-size: 22px;
+                  color: #0A1B33;
                 }
                 .edit-campaign {
                   border-bottom: none;

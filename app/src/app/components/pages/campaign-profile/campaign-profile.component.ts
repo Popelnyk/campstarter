@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {ICampaign, ICampaignBonus} from "../../../services/campaigns.service";
 import {UserService} from "../../../services/user.service";
 import {ModalsService} from "../../../services/modals.service";
+import {DONATE_MODAL} from "../../modals/donate-modal/donate-modal.component";
 
 @Component({
   selector: 'app-campaign-profile',
@@ -103,6 +104,10 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
       userId: this.userService.userId,
       date: new Date
     };
+  }
+
+  onDonate() {
+    this.modalsService.open(DONATE_MODAL, {id: this.id});
   }
 
   //

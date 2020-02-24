@@ -43,7 +43,7 @@
             <div class="photo"></div>
             <div class="info">
               <div class="title">
-                <h3>{{item.name}}</h3>
+                <a [routerLink]="'/campaigns/'+item.id">{{item.name}}</a>
                 <button *ngIf="isOwner()" class="edit-campaign">edit</button>
               </div>
               <div class="info">

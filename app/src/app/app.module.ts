@@ -27,6 +27,7 @@ import { LikesIconComponent } from './icons/Likes/likes-icon/likes-icon.componen
 import { StarIconComponent } from './icons/Star/star-icon.component';
 import { PostNewModalComponent } from './components/modals/post-new/post-new.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
+import { DonateModalComponent } from './components/modals/donate-modal/donate-modal.component';
 
 
 
@@ -49,6 +50,7 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
     StarIconComponent,
     PostNewModalComponent,
     NotFoundComponent,
+    DonateModalComponent,
   ],
   imports: [
     BrowserModule,

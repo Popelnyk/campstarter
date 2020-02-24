@@ -10,6 +10,7 @@ import { Observable } from 'rxjs'
 interface ICampaign {
   name?: string;
   about?: string;
+  id: string | number;
 }
 
 @Component({
