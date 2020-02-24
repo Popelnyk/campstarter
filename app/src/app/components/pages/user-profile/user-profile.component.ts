@@ -33,7 +33,7 @@ export class UserProfileComponent implements OnInit{
   error = false;
 
   private routeSub: Subscription;
-  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient, private userService: UserService, public modalsService: ModalsService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient, public userService: UserService, public modalsService: ModalsService) { }
 
   async ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {
