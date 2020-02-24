@@ -29,6 +29,7 @@ export class UserProfileComponent implements OnInit{
   public money:number = null;
   public listOfCampaigns:Array<ICampaign> = [];
   public username:string = null;
+  public bonuses:Array<string> = [];
 
   error = false;
 
@@ -53,6 +54,7 @@ export class UserProfileComponent implements OnInit{
         this.listOfCampaigns = this.listOfCampaigns.reverse();
         this.money = data['money'];
         this.username = data['username'];
+        this.bonuses = data['bonuses']
       },
       error => {
         this.router.navigate(['/404']);
