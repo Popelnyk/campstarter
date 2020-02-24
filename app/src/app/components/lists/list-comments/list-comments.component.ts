@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 export interface IComment {
   id: number;
@@ -14,13 +14,14 @@ export interface IComment {
   templateUrl: './list-comments.component.html',
   styleUrls: ['./list-comments.component.scss']
 })
-export class ListCommentsComponent implements OnInit {
+export class ListCommentsComponent {
 
   @Input() comments: Array<IComment>;
 
   constructor() { }
 
-  ngOnInit(): void {
+  onLike(id) {
+
   }
 
 }

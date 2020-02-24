@@ -13,7 +13,9 @@
     <div class="status-comment">
       <div class="likes">
         <span>{{data.likes_count}}</span>
-        <svg-likes></svg-likes>
+        <div (click)="onLike(data.id)">
+          <svg-likes></svg-likes>
+        </div>
       </div>
     </div>
   </div>
