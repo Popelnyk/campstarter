@@ -1,0 +1,16 @@
+<modal>
+  <div class="modal">
+    <span (click)="cbClose.emit()" class="closeIcon">
+      <img alt="close" src="https://i.ya-webdesign.com/images/close-icon-png-3.png">
+    </span>
+    <form (ngSubmit)="onSubmit(form)" class="form" #form="ngForm">
+      <div class="input-title">
+        <div class="head">
+          <span>Amount to donate</span>
+        </div>
+        <input ngModel name="amount">
+      </div>
+      <button>Donate</button>
+    </form>
+  </div>
+</modal>
