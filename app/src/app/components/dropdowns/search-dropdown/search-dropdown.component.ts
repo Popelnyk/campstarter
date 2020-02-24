@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import {UserService} from "../../../services/user.service";
+import {HttpClient} from "@angular/common/http";
 
 interface IList {
   id: string | number;
@@ -17,15 +19,17 @@ export class SearchDropdownComponent implements OnChanges{
 
   list: Array<IList> = [];
 
-  ngOnChanges(changes: SimpleChanges): void {
+  constructor(private http:HttpClient) {}
+
+  async ngOnChanges(changes: SimpleChanges): void {
     if(changes['searchValue'].isFirstChange()) return;
 
-    // Здесь выполнять запрос
+    console.log(changes['searchValue']);
 
-    //В лист записать элементы поиска
-    //this.list = [];
-
-
+    await this.http.get(`http://127.0.0.1:8000/campaigns/?search=${changes['searchValue']['currentValue']}`).subscribe(
+      data => this.list = data,
+      error => console.log(error)
+    )
   }
 
   onChooseCampaign() {
