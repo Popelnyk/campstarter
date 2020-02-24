@@ -1,0 +1,19 @@
+.container {
+  width: 400px;
+  padding: 10px 20px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  padding: 10px 10px;
+  color: #975BFF;
+  font-weight: bold;
+}
