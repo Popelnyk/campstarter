@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="list.length" class="container">
   <div class="list">
     <a *ngFor="let item of list" class="item" [routerLink]="'/campaigns/'+item.id" (click)="onChooseCampaign()">{{item.name}}</a>
   </div>
