@@ -39,7 +39,7 @@
       <div class="line">
         <div class="list-campaigns">
           <div class="campaign" *ngFor="let item of listOfCampaigns">
-            <div class="icon-delete"></div>
+            <div *ngIf="userService.token" class="icon-delete"></div>
             <div class="photo"></div>
             <div class="info">
               <div class="title">

@@ -40,7 +40,7 @@
           donate {{bonus.value}}$ and receive {{bonus.about}}
         </div>
       </div>
-      <button class="btn donate" (click)="onDonate()">
+      <button class="btn donate" *ngIf="userService.token" (click)="onDonate()">
         Donate
       </button>
     </div>
@@ -50,14 +50,14 @@
 
   <div class="tabs">
     <div class="tab" *ngFor="let tab of tabs" (click)="onTabClick({tabName: tab})" [ngClass]="{active: tab === currentTab}" >{{tab}}</div>
-    <div class="postNew" (click)="onPostNew()">Post new</div>
+    <div class="postNew" *ngIf="isOwner()" (click)="onPostNew()">Post new</div>
   </div>
 
   <div [ngSwitch]="currentTab" class="list">
     <app-list-news [news]="news" *ngSwitchCase="'NEWS'"></app-list-news>
     <div *ngSwitchCase="'COMMENTS'">
       <app-list-comments [comments]="comments"></app-list-comments>
-      <div class="add-comment">
+      <div class="add-comment" *ngIf="userService.token">
         <input #inputAddComment>
         <button type="button" (click)="onPostComment(inputAddComment.value)">Post</button>
       </div>
