@@ -107,11 +107,10 @@ export class CampaignProfileComponent implements OnInit, ICampaign {
   }
 
   onSelectStar(star) {
-
+    if(this.isBlockedStar) return;
     this.http.post(`http://127.0.0.1:8000/campaigns/${this.id}/rating/`, JSON.stringify({value:star}),
       this.httpOptions).subscribe(
       (data) => {
-        console.log(data);
         this.isBlockedStar = true;
       },
       error => console.log(error)
