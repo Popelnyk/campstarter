@@ -5,6 +5,7 @@
   top: 100%;
   left: 0;
   background: #ffffff;
+  border: solid 1px #333333;
 }
 
 .list {
@@ -15,5 +16,10 @@
 .item {
   padding: 10px 10px;
   color: #975BFF;
+  margin: 5px 0;
   font-weight: bold;
+  border: solid 1px #333333;
+  &:hover {
+    background: #b3d4fc;
+  }
 }

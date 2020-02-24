@@ -15,7 +15,7 @@ export class SearchDropdownComponent implements OnChanges{
   @Input() searchValue:string;
   @Output() onChoose: EventEmitter<void> = new EventEmitter<void>();
 
-  list: Array<any> = [];
+  list: Array<IList> = [];
 
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['searchValue'].isFirstChange()) return;
