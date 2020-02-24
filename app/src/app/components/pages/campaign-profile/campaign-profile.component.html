@@ -50,7 +50,7 @@
 
   <div class="tabs">
     <div class="tab" *ngFor="let tab of tabs" (click)="onTabClick({tabName: tab})" [ngClass]="{active: tab === currentTab}" >{{tab}}</div>
-    <div class="postNew" (click)="modalsService.open(modalsService.modals.POST_NEW_MODAL)">Post new</div>
+    <div class="postNew" (click)="onPostNew()">Post new</div>
   </div>
 
   <div [ngSwitch]="currentTab" class="list">
