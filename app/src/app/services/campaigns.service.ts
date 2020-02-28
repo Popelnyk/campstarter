@@ -7,15 +7,19 @@ export interface ICampaignBonus {
   about: string;
 }
 
+export interface ICampaignTag {
+  name: string;
+}
+
 export interface ICampaign {
   name: string;
   about: string;
   theme: string,
-  tags: Array<string>;
   videoLink:string;
   goalAmount: number;
   curAmount: number;
   bonuses: Array<ICampaignBonus>;
+  tags: Array<ICampaignTag>;
   ownerId: string | number;
   id: string | number;
 }

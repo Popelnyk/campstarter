@@ -18,7 +18,9 @@
       <div class="theme">{{theme}}</div>
       <div class="tags">
         <div class="title">Tags:</div>
-        <div class="items">tag1, tag2, tag3, tag4</div>
+        <div class="items" *ngFor="let item of tags">
+          <p>{{item.name}}&nbsp;&nbsp;</p>
+        </div>
       </div>
       <div class="hr"></div>
       <div class="about">

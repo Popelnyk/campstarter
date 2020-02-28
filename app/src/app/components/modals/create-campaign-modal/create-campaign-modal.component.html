@@ -26,7 +26,7 @@
       <div class="campaign-tags">
         <span class="head">Tags</span>
         <div class="tags">
-          <span *ngFor="let tag of tags" class="tag">{{tag}}</span>
+          <span *ngFor="let tag of tags" class="tag">{{tag.name}}</span>
           <div class="add-tag">
             <button (click)="addingTag = true" *ngIf="!addingTag" class="btn-add-tag" type="button"></button>
             <div *ngIf="addingTag" class="adding-tag">
