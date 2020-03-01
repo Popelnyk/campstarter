@@ -2,7 +2,7 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {ICampaign, ICampaignBonus} from "../../../services/campaigns.service";
+import {ICampaign, ICampaignBonus, ICampaignTag} from "../../../services/campaigns.service";
 import {UserService} from "../../../services/user.service";
 import {ModalsService} from "../../../services/modals.service";
 import {DONATE_MODAL} from "../../modals/donate-modal/donate-modal.component";
@@ -23,7 +23,7 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
   videoLink:string = '';
   goalAmount:number = null;
   curAmount:number = null;
-  tags: Array<string> = [];
+  tags: Array<ICampaignTag> = [];
   bonuses:Array<ICampaignBonus> = [];
 
 
@@ -98,6 +98,8 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
         this.ownerId = data['owner_id'];
         if(data['bonuses'])
           this.bonuses = JSON.parse(data['bonuses']);
+        if(data['tags'])
+          this.tags = JSON.parse(data['tags']);
       },
       error => {
           this.router.navigate(['/404']);
@@ -123,8 +125,8 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
 
   }
 
-  block(id) {
-    return this.userService.userId == id;
+  notFinished() {
+    return !(this.curAmount >= this.goalAmount);
   }
 
   onPostComment(message) {

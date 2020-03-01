@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
 
 import {ActivatedRoute, Router} from "@angular/router";
 import {BehaviorSubject, Subscription} from "rxjs";
@@ -29,11 +29,14 @@ export class UserProfileComponent implements OnInit{
   public money:number = null;
   public listOfCampaigns:Array<ICampaign> = [];
   public username:string = null;
+  public bonuses:Array<string> = [];
 
   error = false;
 
   private routeSub: Subscription;
-  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient, public userService: UserService, public modalsService: ModalsService) { }
+  constructor(private router: Router, private route: ActivatedRoute,
+              private http: HttpClient, public userService: UserService,
+              public modalsService: ModalsService, private _ngZone: NgZone) { }
 
   async ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {
@@ -43,7 +46,7 @@ export class UserProfileComponent implements OnInit{
   }
 
   async profileUpdate(id) {
-    await this.http.get(`http://127.0.0.1:8000/users/${id}/`).subscribe(
+    this.http.get(`http://127.0.0.1:8000/users/${id}/`).subscribe(
       (data) => {
         this.name = data['name'];
         this.hometown = data['hometown'];
@@ -53,6 +56,7 @@ export class UserProfileComponent implements OnInit{
         this.listOfCampaigns = this.listOfCampaigns.reverse();
         this.money = data['money'];
         this.username = data['username'];
+        this.bonuses = data['bonuses']
       },
       error => {
         this.router.navigate(['/404']);

@@ -17,7 +17,7 @@ export class AuthModalComponent {
 
   @Output() cbClose: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private userService: UserService) {
+  constructor(public userService: UserService) {
   }
 
   async onSubmit(event) {

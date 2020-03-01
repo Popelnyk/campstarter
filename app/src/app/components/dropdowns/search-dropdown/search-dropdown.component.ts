@@ -18,6 +18,7 @@ export class SearchDropdownComponent implements OnChanges{
   @Output() onChoose: EventEmitter<void> = new EventEmitter<void>();
 
   list:any;
+  isList:boolean;
 
   constructor(private http:HttpClient) {}
 
@@ -25,7 +26,10 @@ export class SearchDropdownComponent implements OnChanges{
     if(changes['searchValue'].isFirstChange()) return;
 
     await this.http.get(`http://127.0.0.1:8000/campaigns/?search=${changes['searchValue']['currentValue']}`).subscribe(
-      data => this.list = data,
+      data => {
+        this.list = data;
+        this.isList = data[0];
+      },
       error => console.log(error)
     )
   }

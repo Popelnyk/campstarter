@@ -1,5 +1,6 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable, NgZone, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Injectable()
@@ -10,7 +11,13 @@ export class UserService {
   public errors: any = null;
   public userId: number;
 
-  constructor(private http: HttpClient) {
+  public fbUrlLogin = 'https://www.facebook.com/v6.0/dialog/oauth?client_id=2500936673496401&' +
+    'redirect_uri=http://localhost:4200/&' +
+    'state={st=state123abc,ds=123456789}&' +
+    'response_type=token';
+
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute,
+              public _zone: NgZone) {
     this.httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
@@ -30,6 +37,10 @@ export class UserService {
         this.errors = error['status'];
       }
     );
+  }
+
+  public async loginFacebook() {
+    window.location.href = this.fbUrlLogin;
   }
 
   public logout() {

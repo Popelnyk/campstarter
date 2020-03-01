@@ -18,7 +18,9 @@
       <div class="theme">{{theme}}</div>
       <div class="tags">
         <div class="title">Tags:</div>
-        <div class="items">tag1, tag2, tag3, tag4</div>
+        <div class="items" *ngFor="let item of tags">
+          <p>{{item.name}}&nbsp;&nbsp;</p>
+        </div>
       </div>
       <div class="hr"></div>
       <div class="about">
@@ -34,13 +36,13 @@
       <span class="title">Received</span>
       <span class="value">{{curAmount}}$</span>
     </span>
+      <div class="title">Bonuses list</div>
       <div class="bonuses-list" *ngFor="let bonus of bonuses">
-        <div class="title">Bonuses list</div>
         <div class="line">
           donate {{bonus.value}}$ and receive {{bonus.about}}
         </div>
       </div>
-      <button class="btn donate" *ngIf="userService.token" (click)="onDonate()">
+      <button class="btn donate" *ngIf="userService.token && notFinished()" (click)="onDonate()">
         Donate
       </button>
     </div>

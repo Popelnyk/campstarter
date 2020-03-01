@@ -7,15 +7,19 @@ export interface ICampaignBonus {
   about: string;
 }
 
+export interface ICampaignTag {
+  name: string;
+}
+
 export interface ICampaign {
   name: string;
   about: string;
   theme: string,
-  tags: Array<string>;
   videoLink:string;
   goalAmount: number;
   curAmount: number;
   bonuses: Array<ICampaignBonus>;
+  tags: Array<ICampaignTag>;
   ownerId: string | number;
   id: string | number;
 }
@@ -69,7 +73,6 @@ export class CampaignsService {
     this.http.post('http://127.0.0.1:8000/campaigns/', JSON.stringify(campaign), httpOptions).subscribe(
       (data) => {
         console.log(data);
-        window.location.reload();
       },
       error => console.log(error)
     )
