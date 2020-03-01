@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CampaignsService} from "../../../services/campaigns.service";
+import {CampaignsService, ICampaignTag} from "../../../services/campaigns.service";
 
 @Component({
   selector: 'main-layout',
@@ -11,6 +11,7 @@ export class MainLayoutComponent implements OnInit {
 
   constructor(public campaignsService: CampaignsService) {
   }
+
 
   ngOnInit(): void {
     this.campaignsService.getBestCampaign();

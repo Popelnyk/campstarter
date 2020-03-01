@@ -73,7 +73,6 @@ export class CampaignsService {
     this.http.post('http://127.0.0.1:8000/campaigns/', JSON.stringify(campaign), httpOptions).subscribe(
       (data) => {
         console.log(data);
-        window.location.reload();
       },
       error => console.log(error)
     )
