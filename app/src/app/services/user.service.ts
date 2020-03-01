@@ -13,7 +13,8 @@ export class UserService {
 
   public fbUrlLogin = 'https://www.facebook.com/v6.0/dialog/oauth?client_id=2500936673496401&' +
     'redirect_uri=http://localhost:4200/&' +
-    'state={st=state123abc,ds=123456789}';
+    'state={st=state123abc,ds=123456789}&' +
+    'response_type=token';
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute,
               public _zone: NgZone) {
@@ -39,7 +40,7 @@ export class UserService {
   }
 
   public async loginFacebook() {
-    window.open(this.fbUrlLogin);
+    window.location.href = this.fbUrlLogin;
   }
 
   public logout() {

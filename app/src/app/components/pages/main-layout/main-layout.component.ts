@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CampaignsService, ICampaignTag} from "../../../services/campaigns.service";
+import {ActivatedRoute, NavigationCancel, Router} from "@angular/router";
 
 @Component({
   selector: 'main-layout',
@@ -9,8 +10,8 @@ import {CampaignsService, ICampaignTag} from "../../../services/campaigns.servic
 export class MainLayoutComponent implements OnInit {
 
 
-  constructor(public campaignsService: CampaignsService) {
-  }
+  constructor(public campaignsService: CampaignsService, private route: Router) { }
+
 
 
   ngOnInit(): void {
