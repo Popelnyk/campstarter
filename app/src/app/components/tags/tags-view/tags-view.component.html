@@ -1,0 +1,7 @@
+<div class="container">
+
+  <ng-container *ngFor="let tag of tags;let i = index">
+    <a [ngStyle]="{backgroundColor: colors[i]}" class="triangle" *ngIf="i < 5">{{tag}}</a>
+  </ng-container>
+
+</div>

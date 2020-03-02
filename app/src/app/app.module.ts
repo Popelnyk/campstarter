@@ -29,6 +29,7 @@ import { PostNewModalComponent } from './components/modals/post-new/post-new.com
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { DonateModalComponent } from './components/modals/donate-modal/donate-modal.component';
 import { SearchDropdownComponent } from './components/dropdowns/search-dropdown/search-dropdown.component';
+import { TagsViewComponent } from './components/tags/tags-view/tags-view.component';
 
 
 
@@ -53,6 +54,7 @@ import { SearchDropdownComponent } from './components/dropdowns/search-dropdown/
     NotFoundComponent,
     DonateModalComponent,
     SearchDropdownComponent,
+    TagsViewComponent,
   ],
   imports: [
     BrowserModule,

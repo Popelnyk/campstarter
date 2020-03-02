@@ -1,18 +1,33 @@
-<div class="recently" *ngIf="campaignsService.bestCampaign">
-  <h3>Campaign with the highest ratings</h3>
-  <div class="recently-info">
-    <img class="recently-info-image" src="https://images.wallpaperscraft.ru/image/litso_kraska_profil_abstraktsiya_95073_1920x1080.jpg" alt="image">
-    <div class="recently-info-text">
-      <a [routerLink]="'/campaigns/'+campaignsService.bestCampaign.id"><h4>{{ campaignsService.bestCampaign.name }}</h4></a>
-      <p>{{ campaignsService.bestCampaign.about }}</p>
+
+<div class="best-campaign">
+
+  <div class="best-campaign-left">
+    <h2 class="best-campaign-title">Campaigns with the highest ratings</h2>
+    <div class="best-campaign-container">
+      <div class="photo"></div>
+      <a [routerLink]="'/campaigns/'+campaignsService.bestCampaign.id" class="title">{{ campaignsService.bestCampaign.name }}</a>
+      <p class="text">
+        {{campaignsService.bestCampaign.about}}
+      </p>
     </div>
   </div>
+
+  <div class="tags">
+    <tags-view></tags-view>
+  </div>
+
+
 </div>
 
 <div class="recently-added">
-    <div class="recently-item" *ngFor="let item of campaignsService.listOfCampaigns">
-      <img class="recently-item-image" src="https://images.wallpaperscraft.ru/image/sneg_gory_vershiny_160678_1920x1080.jpg" alt="">
-      <a [routerLink]="'/campaigns/'+item.id" class="recently-item-title"> {{ item.name }} </a>
-      <h6 class="recently-item-link"> {{ item.about }} </h6>
+
+  <div *ngFor="let item of campaignsService.listOfCampaigns" class="recently-item">
+    <img alt=""
+         class="recently-item-image" src="https://images.wallpaperscraft.ru/image/sneg_gory_vershiny_160678_1920x1080.jpg">
+    <a [routerLink]="'/campaigns/'+item.id" class="recently-item-title"> {{ item.name }} </a>
+    <h6 class="recently-item-link"> {{ item.about }} </h6>
   </div>
+
 </div>
+
+

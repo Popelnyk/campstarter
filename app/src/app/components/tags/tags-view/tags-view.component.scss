@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+  .triangle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 80px;
+    background: #975BFF;
+    color: #ffffff;
+    text-transform: uppercase;
+    border-radius: 50%;
+    margin: 5px 0;
+  }
+}

@@ -1,11 +1,50 @@
+.best-campaign {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 30px;
+  &-left {
+    margin-left: 50px;
+  }
+  &-title {
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+
+  &-container {
+    padding-left: 40px;
+    border-left: solid 2px #975BFF;
+    color: #333333;
+
+    .photo {
+      width: 600px;
+      height: 300px;
+      background-color: #0A1B33;
+    }
+    .title {
+      display: inline-block;
+      font-size: 25px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .text {
+      font-size: 14px;
+    }
+  }
+}
+
+
 .recently-added {
+
   width: 100%;
   padding: 0 10%;
 
   display: inline-flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin: 0 auto;
+  margin: 100px auto 0 auto;
   .recently-item {
     display: inline-flex;
     flex-direction: column;
@@ -19,42 +58,13 @@
       color: #000000;
       margin: 5px 0;
       font-weight: bold;
+      word-wrap: break-word;
     }
     .recently-item-link {
-      font-size: 18px;
+      font-size: 14px;
       color: #514C54;
+      word-wrap: break-word;
     }
 
-  }
-}
-
-.recently {
-  padding: 30px 0 0 40px;
-  h3 {
-    font-weight: bold;
-    font-size: 30px;
-  }
-  .recently-info {
-    display: flex;
-    flex-direction: column;
-    border-left: solid 2px #2A293E;
-    padding-left: 50px;
-    width: 100%;
-    max-width: 800px;
-    margin-top: 30px;
-    &-image {
-      width: 100%;
-    }
-    &-text {
-      margin-top: 20px;
-      h4 {
-        font-size: 25px;
-        font-weight: bold;
-      }
-      p {
-        font-size: 18px;
-        margin-top: 10px;
-      }
-    }
   }
 }
