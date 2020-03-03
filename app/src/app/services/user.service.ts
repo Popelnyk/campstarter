@@ -39,10 +39,6 @@ export class UserService {
     );
   }
 
-  public async loginFacebook() {
-    window.location.href = this.fbUrlLogin;
-  }
-
   public logout() {
     this.token = null;
     this.userId = null;

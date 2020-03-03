@@ -33,6 +33,13 @@ export class CampaignsService {
   public bestCampaign: ICampaign = null;
   public listOfCampaigns: Array<ICampaign> = [];
 
+  private httpOptionsWithToken = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.userService.token}`
+    })
+  };
+
   constructor(private http: HttpClient, private userService: UserService) {
   }
 
@@ -63,18 +70,18 @@ export class CampaignsService {
     console.log(campaign);
     console.log(this.userService.token);
 
-    let httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.userService.token}`
-      })
-    };
-
-    this.http.post('http://127.0.0.1:8000/campaigns/', JSON.stringify(campaign), httpOptions).subscribe(
+    this.http.post('http://127.0.0.1:8000/campaigns/', JSON.stringify(campaign), this.httpOptionsWithToken).subscribe(
       (data) => {
         console.log(data);
       },
       error => console.log(error)
+    )
+  }
+
+  deleteCampaign(id) {
+    this.http.delete(`http://127.0.0.1:8000/campaigns/${id}/`, this.httpOptionsWithToken).subscribe(
+      (data) => console.log(data),
+    (error) => console.log(error)
     )
   }
 

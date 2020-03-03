@@ -6,6 +6,7 @@ import {ModalsService} from "../../../services/modals.service";
 import {HttpClient} from "@angular/common/http";
 import {UserService} from "../../../services/user.service";
 import { Observable } from 'rxjs'
+import {CampaignsService} from "../../../services/campaigns.service";
 
 interface ICampaign {
   name?: string;
@@ -36,7 +37,8 @@ export class UserProfileComponent implements OnInit{
   private routeSub: Subscription;
   constructor(private router: Router, private route: ActivatedRoute,
               private http: HttpClient, public userService: UserService,
-              public modalsService: ModalsService, private _ngZone: NgZone) { }
+              public modalsService: ModalsService, private _ngZone: NgZone,
+              public campaignService: CampaignsService) { }
 
   async ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {

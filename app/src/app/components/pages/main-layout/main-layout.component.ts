@@ -10,8 +10,7 @@ import {ActivatedRoute, NavigationCancel, Router} from "@angular/router";
 export class MainLayoutComponent implements OnInit {
 
 
-  constructor(public campaignsService: CampaignsService, private route: Router) { }
-
+  constructor(public campaignsService: CampaignsService) { }
 
 
   ngOnInit(): void {
