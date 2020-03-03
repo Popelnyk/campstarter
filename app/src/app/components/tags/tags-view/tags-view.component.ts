@@ -2,12 +2,6 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
 
-interface Itag {
-  id: number;
-  name: string;
-}
-
-
 @Component({
   selector: 'tags-view',
   templateUrl: './tags-view.component.html',
@@ -15,7 +9,7 @@ interface Itag {
 })
 export class TagsViewComponent implements OnInit {
   // @Input("tags") tags;
-  tags: Array<Itag> = [];
+  tags: any;
   colors = ["#7059FF", "#339DFF", "#1EC745", "#1E86C7", "#EB4E4F"];
 
   constructor(private http: HttpClient) { }
