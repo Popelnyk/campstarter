@@ -17,9 +17,10 @@ export class MainLayoutComponent implements OnInit {
     this.campaignsService.getListOfCampaigns();
   }
 
-  onTagClick(tagName) {
+  onTagClick(tagId) {
+    console.log(tagId);
     this.tagsActive = false;
-    this.campaignsService.getListOfCampaignsByTag(tagName);
+    this.campaignsService.getListOfCampaignsByTag(tagId);
   }
 
 
