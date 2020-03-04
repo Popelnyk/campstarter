@@ -1,5 +1,5 @@
 
-<div class="best-campaign">
+<div *ngIf="tagsActive" class="best-campaign">
 
   <div class="best-campaign-left">
     <h2 class="best-campaign-title">Campaigns with the highest ratings</h2>
@@ -13,7 +13,7 @@
   </div>
 
   <div class="tags">
-    <tags-view></tags-view>
+    <tags-view (cbOnTagClick)="onTagClick($event)"></tags-view>
   </div>
 
 

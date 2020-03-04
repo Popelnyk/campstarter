@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
 
@@ -13,6 +13,9 @@ export class TagsViewComponent implements OnInit {
   colors = ["#7059FF", "#339DFF", "#1EC745", "#1E86C7", "#EB4E4F"];
 
   constructor(private http: HttpClient) { }
+
+  @Output() cbOnTagClick = new EventEmitter();
+
 
   ngOnInit(): void {
     this.http.get('http://127.0.0.1:8000/tags/').subscribe(

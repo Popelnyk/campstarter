@@ -85,4 +85,7 @@ export class CampaignsService {
     )
   }
 
+  getListOfCampaignsByTag(tagName) {
+
+  }
 }
