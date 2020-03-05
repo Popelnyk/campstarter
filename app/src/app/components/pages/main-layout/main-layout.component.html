@@ -5,8 +5,8 @@
     <h2 class="best-campaign-title">Campaigns with the highest ratings</h2>
     <div class="best-campaign-container">
       <div class="photo"></div>
-      <a [routerLink]="'/campaigns/'+campaignsService.bestCampaign.id" class="title">{{ campaignsService.bestCampaign.name }}</a>
-      <p class="text">
+      <a *ngIf="campaignsService.bestCampaign" [routerLink]="'/campaigns/'+campaignsService.bestCampaign.id" class="title">{{ campaignsService.bestCampaign.name }}</a>
+      <p class="text" *ngIf="campaignsService.bestCampaign">
         {{campaignsService.bestCampaign.about}}
       </p>
     </div>

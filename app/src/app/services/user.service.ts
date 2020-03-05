@@ -10,6 +10,7 @@ export class UserService {
   public token = null;
   public errors: any = null;
   public userId: number;
+  public code:number;
 
   public fbUrlLogin = 'https://www.facebook.com/v6.0/dialog/oauth?client_id=2500936673496401&' +
     'redirect_uri=http://localhost:4200/&' +
@@ -37,6 +38,24 @@ export class UserService {
         this.errors = error['status'];
       }
     );
+  }
+
+  public openFbLogin() {
+    window.location.href = 'https://www.facebook.com/v6.0/dialog/oauth?client_id=2500936673496401&redirect_uri=http://localhost:4200/&state={st=state123abc,ds=123456789}&response_type=code'
+  }
+
+  public loginFacebook() {
+      let auth = {
+        "provider": "facebook",
+        "code": `${this.code}`
+      };
+      this.http.post('http://127.0.0.1:8000/api/login/social/jwt-pair/', JSON.stringify(auth), this.httpOptions).subscribe(
+        data => {
+          this.updateData(data['token']);
+          window.location.href = 'http://localhost:4200/';
+        },
+        error => console.log(error)
+      )
   }
 
   public logout() {
