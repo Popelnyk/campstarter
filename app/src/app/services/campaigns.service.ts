@@ -90,4 +90,11 @@ export class CampaignsService {
   setTag(tagName) {
     this.tagName = tagName;
   }
+
+  getListOfCampaignsByTag(tagId) {
+    this.http.get(`http://127.0.0.1:8000/tags/${tagId}/`).subscribe(
+      data => this.setListOfCampaigns(data),
+      error => console.log(error)
+    )
+  }
 }
