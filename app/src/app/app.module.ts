@@ -30,6 +30,7 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
 import { DonateModalComponent } from './components/modals/donate-modal/donate-modal.component';
 import { SearchDropdownComponent } from './components/dropdowns/search-dropdown/search-dropdown.component';
 import { TagsViewComponent } from './components/tags/tags-view/tags-view.component';
+import { CampaignsComponent } from './components/pages/campaigns/campaigns.component';
 
 
 
@@ -55,6 +56,7 @@ import { TagsViewComponent } from './components/tags/tags-view/tags-view.compone
     DonateModalComponent,
     SearchDropdownComponent,
     TagsViewComponent,
+    CampaignsComponent,
   ],
   imports: [
     BrowserModule,

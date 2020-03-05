@@ -1,0 +1,10 @@
+<div class="recently-added">
+
+  <div *ngFor="let item of campaigns" class="recently-item">
+    <img alt=""
+         class="recently-item-image" src="https://images.wallpaperscraft.ru/image/sneg_gory_vershiny_160678_1920x1080.jpg">
+    <a [routerLink]="'/campaigns/'+item.id" class="recently-item-title"> {{ item.name }} </a>
+    <h6 class="recently-item-link"> {{ item.about }} </h6>
+  </div>
+
+</div>

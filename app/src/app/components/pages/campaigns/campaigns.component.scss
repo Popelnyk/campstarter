@@ -1,0 +1,32 @@
+.recently-added {
+
+  width: 100%;
+  padding: 0 10%;
+
+  display: inline-flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 100px auto 0 auto;
+  .recently-item {
+    display: inline-flex;
+    flex-direction: column;
+    width: 35%;
+    margin: 10px 0;
+    img {
+      width: 100%;
+    }
+    .recently-item-title {
+      font-size: 25px;
+      color: #000000;
+      margin: 5px 0;
+      font-weight: bold;
+      word-wrap: break-word;
+    }
+    .recently-item-link {
+      font-size: 14px;
+      color: #514C54;
+      word-wrap: break-word;
+    }
+
+  }
+}

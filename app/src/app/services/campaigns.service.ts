@@ -33,6 +33,8 @@ export class CampaignsService {
   public bestCampaign: ICampaign = null;
   public listOfCampaigns: Array<ICampaign> = [];
 
+  public tagName = '';
+
   private httpOptionsWithToken = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -83,6 +85,10 @@ export class CampaignsService {
       (data) => console.log(data),
     (error) => console.log(error)
     )
+  }
+
+  setTag(tagName) {
+    this.tagName = tagName;
   }
 
   getListOfCampaignsByTag(tagId) {

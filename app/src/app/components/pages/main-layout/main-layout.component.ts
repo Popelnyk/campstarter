@@ -10,8 +10,6 @@ import {UserService} from "../../../services/user.service";
 })
 export class MainLayoutComponent implements OnInit {
 
-  tagsActive = true;
-
   constructor(public campaignsService: CampaignsService, private route:ActivatedRoute,
               private userService: UserService) { }
 
@@ -27,12 +25,4 @@ export class MainLayoutComponent implements OnInit {
       }
     )
   }
-
-  onTagClick(tagId) {
-    console.log(tagId);
-    this.tagsActive = false;
-    this.campaignsService.getListOfCampaignsByTag(tagId);
-  }
-
-
 }
