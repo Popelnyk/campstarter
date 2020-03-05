@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {CampaignsService} from "../../../services/campaigns.service";
 
 
 @Component({
@@ -12,9 +13,7 @@ export class TagsViewComponent implements OnInit {
   tags: any;
   colors = ["#7059FF", "#339DFF", "#1EC745", "#1E86C7", "#EB4E4F"];
 
-  constructor(private http: HttpClient) { }
-
-  @Output() cbOnTagClick = new EventEmitter();
+  constructor(private http: HttpClient, public campaignsService: CampaignsService) { }
 
 
   ngOnInit(): void {
@@ -22,6 +21,10 @@ export class TagsViewComponent implements OnInit {
       data => this.tags = data,
       error => console.log(error)
     )
+  }
+
+  onTagClick(tagName) {
+    this.campaignsService.setTag(tagName);
   }
 
 }

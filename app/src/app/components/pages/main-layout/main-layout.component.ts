@@ -8,19 +8,11 @@ import {CampaignsService} from "../../../services/campaigns.service";
 })
 export class MainLayoutComponent implements OnInit {
 
-  tagsActive = true;
-
   constructor(public campaignsService: CampaignsService) { }
 
   ngOnInit(): void {
     this.campaignsService.getBestCampaign();
     this.campaignsService.getListOfCampaigns();
   }
-
-  onTagClick(tagName) {
-    this.tagsActive = false;
-    this.campaignsService.getListOfCampaignsByTag(tagName);
-  }
-
 
 }
