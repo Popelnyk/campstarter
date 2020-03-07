@@ -5,6 +5,7 @@ export interface INews {
   about: string,
   creation_date: string,
   id: string | number;
+  isBig: boolean;
 }
 
 @Component({
@@ -19,6 +20,7 @@ export class ListNewsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

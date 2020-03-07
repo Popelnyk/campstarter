@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="hr"></div>
-      <div class="about">
+      <div class="about" style="word-wrap: break-word;">
         {{about}}
       </div>
     </div>
@@ -36,6 +36,7 @@
       <span class="title">Received</span>
       <span class="value">{{curAmount}}$</span>
     </span>
+      <br>
       <div class="title">Bonuses list</div>
       <div class="bonuses-list" *ngFor="let bonus of bonuses">
         <div class="line">

@@ -27,7 +27,7 @@ export class PostNewModalComponent  {
 
   constructor(private  http: HttpClient, private userService: UserService) { }
 
-  onSubmit({form: {value: values}}) {
+  async onSubmit({form: {value: values}}) {
     console.log(this.data);
     this.id = this.data.id;
     this.description = values.description;

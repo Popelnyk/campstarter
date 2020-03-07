@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {CampaignsService} from "../../../services/campaigns.service";
+import {CampaignsService, ICampaign} from "../../../services/campaigns.service";
 
 
 @Component({
@@ -23,8 +23,8 @@ export class TagsViewComponent implements OnInit {
     )
   }
 
-  onTagClick(tagName) {
-    this.campaignsService.setTag(tagName);
+  async onTagClick(id) {
+      await this.campaignsService.setTag(id);
   }
 
 }

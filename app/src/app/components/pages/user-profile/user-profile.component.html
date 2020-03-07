@@ -43,7 +43,7 @@
       <div class="line">
         <div class="list-campaigns">
           <div class="campaign" *ngFor="let item of listOfCampaigns">
-            <div *ngIf="userService.token" class="icon-delete" (click)="campaignService.deleteCampaign(item.id)"></div>
+            <div *ngIf="isOwner()" class="icon-delete" (click)="campaignService.deleteCampaign(item.id)"></div>
             <div class="photo"></div>
             <div class="info">
               <div class="title">

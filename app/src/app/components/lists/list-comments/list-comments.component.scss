@@ -1,11 +1,15 @@
 .list {
   display: flex;
   flex-direction: column;
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-top: 30px;
 }
 
 .item {
-  border-bottom: solid 1px #0A1B33;
+  border-bottom: solid 1px rgba(0, 0, 0, .3);;
   padding: 20px 40px;
+  margin-top: 25px;
 }
 
 .user-data {
@@ -43,7 +47,7 @@
   .likes {
     display: inline-flex;
     align-items: center;
-    color:#15FF65;
+    color:#3246FF;
     height: 24px;
     span {
       display: block;

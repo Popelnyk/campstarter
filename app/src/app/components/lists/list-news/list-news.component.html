@@ -4,8 +4,10 @@
     <div class="title">{{data.title}}</div>
     <div class="line"></div>
     <div class="description">
-      <span class="about">{{data.about}}</span>
-      <span class="read-more">read more</span>
+      <span class="about" *ngIf="!data.isBig">{{data.about}}</span>
+      <span class="about" *ngIf="data.isBig">{{data.about.substring(0, 497)}}...</span>
+      <span *ngIf="data.about.length > 500" (click)="data.isBig = !data.isBig" class="read-more">read more</span>
     </div>
   </div>
+
 </div>

@@ -13,13 +13,14 @@
     font-weight: bold;
     margin: 3px 0;
     &.goal {
+      color: #4E4E4E;
       .value {
         color: #3D8BFF;
       }
     }
     &.received {
       .value {
-        color: #4AEB58;
+        color: #41CCA2;
       }
     }
 
@@ -28,7 +29,7 @@
     }
 
     .title {
-      color: #333333;
+      color: #4E4E4E;
     }
   }
 
@@ -51,13 +52,13 @@
   .btn {
     &.donate {
       padding: 8px 16px;
-      background: #66EB82;
+      background: #41CCA2;
       color: #ffffff;
       font-weight: bold;
       margin-top: 10px;
       transition: .2s;
       &:active {
-        background: #54EB49;
+        background: #41CCA2;
       }
     }
   }
@@ -76,16 +77,17 @@
       width: 100%;
       h1 {
         width: 450px;
-        font-size: 40px;
+        font-size: 30px;
         font-weight: bold;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        padding: 2px;
       }
       .stars {
-        margin-top: 10px;
+        margin-top: 15px;
         display: flex;
-        width: 160px;
+        width: 120px;
         justify-content: space-between;
         .star {
           cursor: pointer;
@@ -105,7 +107,7 @@
         border-radius: 50%;
       }
       .owner-name {
-        color: #555555;
+        color: #9E9E9E;
         margin-top: 9px;
         font-size: 19px;
       }
@@ -113,7 +115,8 @@
   }
 
   .theme {
-    margin-top: 10px;
+    margin-top: 1px;
+
   }
 
   .tags {
@@ -155,10 +158,10 @@
     margin: 0 5px;
     padding: 5px 10px;
     font-weight: bold;
-    color: #975BFF;
+    color: #2B17A0;
     cursor: pointer;
     &.active {
-      border-bottom: solid 2px #975BFF;
+      border-bottom: solid 2px #2608DF;
     }
   }
   .postNew {
@@ -166,7 +169,7 @@
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    color: #975BFF;
+    color: #2B17A0;
     font-weight: bold;
     font-size: 15px;
     cursor: pointer;

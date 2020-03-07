@@ -32,8 +32,8 @@ export class CampaignsService {
 
   public bestCampaign: ICampaign = null;
   public listOfCampaigns: Array<ICampaign> = [];
-
-  public tagName = '';
+  public tagId:number = null;
+  public listOfCampaignsByTag:Array<ICampaign> = [];
 
   private httpOptionsWithToken = {
     headers: new HttpHeaders({
@@ -52,6 +52,11 @@ export class CampaignsService {
   setListOfCampaigns(list) {
     this.listOfCampaigns = list;
   }
+
+  setListOfCampaignsByTag(list) {
+    this.listOfCampaignsByTag = list;
+  }
+
 
   getListOfCampaigns() {
     this.http.get('http://127.0.0.1:8000/campaigns/').subscribe(
@@ -87,8 +92,8 @@ export class CampaignsService {
     )
   }
 
-  setTag(tagName) {
-    this.tagName = tagName;
+  setTag(tagId) {
+    this.tagId = tagId;
   }
 
   getListOfCampaignsByTag(tagId) {

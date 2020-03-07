@@ -36,6 +36,7 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
   currentTab = this.tabs[0];
 
   news: any = [];
+  bigNewText: boolean = false;
 
   comments: any = [];
 
@@ -49,7 +50,8 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
   };
 
   private routeSub: Subscription;
-  constructor(public router: Router,private route: ActivatedRoute, private http: HttpClient, public userService: UserService, public modalsService: ModalsService) { }
+  constructor(public router: Router,private route: ActivatedRoute, private http: HttpClient,
+              public userService: UserService, public modalsService: ModalsService) { }
 
   async ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {
@@ -64,7 +66,7 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
     console.log('update');
   }
 
-  updateComments(id) {
+  async updateComments(id) {
     this.http.get(`http://127.0.0.1:8000/campaigns/${id}/comments/`).subscribe(
       (data) => {
         this.comments = data;
@@ -74,7 +76,7 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
     )
   }
 
-  updateNews(id) {
+  async updateNews(id) {
     this.http.get(`http://127.0.0.1:8000/campaigns/${id}/news/`).subscribe(
       (data) => {
         this.news = data;
