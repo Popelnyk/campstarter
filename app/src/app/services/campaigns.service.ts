@@ -53,11 +53,6 @@ export class CampaignsService {
     this.listOfCampaigns = list;
   }
 
-  setListOfCampaignsByTag(list) {
-    this.listOfCampaignsByTag = list;
-  }
-
-
   getListOfCampaigns() {
     this.http.get('http://127.0.0.1:8000/campaigns/').subscribe(
       (data) => this.setListOfCampaigns(data),

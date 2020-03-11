@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserService } from './services/user.service';
 
-import {FormsModule} from "@angular/forms";
+import {FormBuilder, FormsModule} from "@angular/forms";
 import { AuthModalComponent } from './components/modals/auth-modal/auth-modal.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ModalComponent } from './ui/Modal/modal.component';
@@ -31,8 +31,9 @@ import { DonateModalComponent } from './components/modals/donate-modal/donate-mo
 import { SearchDropdownComponent } from './components/dropdowns/search-dropdown/search-dropdown.component';
 import { TagsViewComponent } from './components/tags/tags-view/tags-view.component';
 import { CampaignsComponent } from './components/pages/campaigns/campaigns.component';
-
-
+import { EditUserProfileModalComponent } from "./components/modals/edit-user-profile-modal/edit-user-profile-modal.component";
+import { DragDropDirective} from "./directives/drag-drop.directive";
+import { UploadFileComponent} from "./upload-file/upload-file.component";
 
 @NgModule({
   declarations: [
@@ -57,6 +58,9 @@ import { CampaignsComponent } from './components/pages/campaigns/campaigns.compo
     SearchDropdownComponent,
     TagsViewComponent,
     CampaignsComponent,
+    EditUserProfileModalComponent,
+    DragDropDirective,
+    UploadFileComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,7 @@ import { CampaignsComponent } from './components/pages/campaigns/campaigns.compo
     HttpClientModule,
     FormsModule,
   ],
-  providers: [UserService, CampaignsService, ModalsService],
+  providers: [UserService, CampaignsService, ModalsService, FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

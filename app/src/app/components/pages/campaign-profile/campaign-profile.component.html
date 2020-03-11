@@ -1,4 +1,5 @@
 <div class="container">
+  <app-upload-file></app-upload-file>
   <div class="floor">
     <div class="campaign-profile">
       <div class="header">
@@ -16,7 +17,7 @@
         </div>
       </div>
       <div class="theme">{{theme}}</div>
-      <div class="tags">
+      <div class="tags" *ngIf="tags.length">
         <div class="title">Tags:</div>
         <div class="items" *ngFor="let item of tags">
           <p>{{item.name}}&nbsp;&nbsp;</p>
@@ -46,6 +47,8 @@
       <button class="btn donate" *ngIf="userService.token && notFinished()" (click)="onDonate()">
         Donate
       </button>
+        <iframe *ngIf="videoLink" src="http://www.youtube.com/embed/W7qWa52k-nE"
+                style="margin-top: 25px;" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 
@@ -57,8 +60,10 @@
   </div>
 
   <div [ngSwitch]="currentTab" class="list">
-    <app-list-news [news]="news" *ngSwitchCase="'NEWS'"></app-list-news>
-    <div *ngSwitchCase="'COMMENTS'">
+    <div *ngSwitchCase="'NEWS'" (click)="currentTab=tabs[0]">
+      <app-list-news [news]="news" *ngSwitchCase="'NEWS'"></app-list-news>
+    </div>
+    <div *ngSwitchCase="'COMMENTS'" (click)="currentTab=tabs[1]">
       <app-list-comments [comments]="comments"></app-list-comments>
       <div class="add-comment" *ngIf="userService.token">
         <input #inputAddComment>

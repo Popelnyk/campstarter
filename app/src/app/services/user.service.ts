@@ -8,6 +8,7 @@ export class UserService {
 
   private httpOptions: any;
   public token = null;
+  public tokenRefresh = null;
   public errors: any = null;
   public userId: number;
   public code:number;

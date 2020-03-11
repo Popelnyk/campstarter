@@ -7,6 +7,8 @@ import {HttpClient} from "@angular/common/http";
 import {UserService} from "../../../services/user.service";
 import { Observable } from 'rxjs'
 import {CampaignsService} from "../../../services/campaigns.service";
+import {DONATE_MODAL} from "../../modals/donate-modal/donate-modal.component";
+import {EDIT_USER_PROFILE_MODAL} from "../../modals/edit-user-profile-modal/edit-user-profile-modal.component";
 
 interface ICampaign {
   name?: string;
@@ -31,6 +33,7 @@ export class UserProfileComponent implements OnInit{
   public listOfCampaigns:Array<ICampaign> = [];
   public username:string = null;
   public bonuses:Array<string> = [];
+  public balance: number = null;
 
   error = false;
 
@@ -58,7 +61,8 @@ export class UserProfileComponent implements OnInit{
         this.listOfCampaigns = this.listOfCampaigns.reverse();
         this.money = data['money'];
         this.username = data['username'];
-        this.bonuses = data['bonuses']
+        this.bonuses = data['bonuses'];
+        this.balance = data['money'];
       },
       error => {
         this.router.navigate(['/404']);
@@ -68,6 +72,11 @@ export class UserProfileComponent implements OnInit{
 
   isOwner() {
     return this.id == this.userService.userId
+  }
+
+  editProfile() {
+      this.modalsService.open(EDIT_USER_PROFILE_MODAL, {id: this.id, name: this.name, hometown:this.hometown,
+      work: this.work, hobbies: this.hobbies});
   }
 
 }

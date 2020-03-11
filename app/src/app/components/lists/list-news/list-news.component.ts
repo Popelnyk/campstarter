@@ -23,4 +23,10 @@ export class ListNewsComponent implements OnInit {
 
   }
 
+  readMore(openOrClose):string {
+    if (openOrClose)
+      return 'read more';
+    else return 'hide';
+  }
+
 }

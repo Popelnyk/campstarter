@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <img alt="" src="https://images.wallpaperscraft.ru/image/sneg_gory_vershiny_160678_1920x1080.jpg">
+  <div class="inline-grid">
+    <img alt="" src="https://images.wallpaperscraft.ru/image/sneg_gory_vershiny_160678_1920x1080.jpg">
+    <img alt="" src="https://images.wallpaperscraft.ru/image/sneg_gory_vershiny_160678_1920x1080.jpg">
+    <img alt="" src="https://images.wallpaperscraft.ru/image/sneg_gory_vershiny_160678_1920x1080.jpg">
+    <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
+      <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
+    </div>
+  </div>
+</div>

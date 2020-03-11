@@ -4,6 +4,7 @@ import {REGISTRATION_MODAL} from "../components/modals/registration-modal/regist
 import {CREATE_CAMPAIGN_MODAL} from "../components/modals/create-campaign-modal/create-campaign-modal.component";
 import {POST_NEW_MODAL} from "../components/modals/post-new/post-new.component";
 import {DONATE_MODAL} from "../components/modals/donate-modal/donate-modal.component";
+import {EDIT_USER_PROFILE_MODAL} from "../components/modals/edit-user-profile-modal/edit-user-profile-modal.component";
 
 @Injectable()
 export class ModalsService {
@@ -25,7 +26,8 @@ export class ModalsService {
     [REGISTRATION_MODAL]: {isOpen: false, data: {}},
     [CREATE_CAMPAIGN_MODAL]: {isOpen: false, data: {}},
     [POST_NEW_MODAL]: {isOpen: false, data: {}},
-    [DONATE_MODAL]: {isOpen: false, data: {}}
+    [DONATE_MODAL]: {isOpen: false, data: {}},
+    [EDIT_USER_PROFILE_MODAL]: {isOpen: false, data: {}},
   };
 
   modals = {
@@ -33,7 +35,8 @@ export class ModalsService {
     REGISTRATION_MODAL,
     CREATE_CAMPAIGN_MODAL,
     POST_NEW_MODAL,
-    DONATE_MODAL
+    DONATE_MODAL,
+    EDIT_USER_PROFILE_MODAL
   };
 
 

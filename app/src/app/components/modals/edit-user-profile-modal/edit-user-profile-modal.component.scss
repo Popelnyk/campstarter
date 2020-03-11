@@ -1,0 +1,94 @@
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  background: #ffffff;
+  padding: 50px 30px;
+  border-radius: 7px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-info {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  align-items: center;
+  margin-top: 55px;
+  input {
+    width: 100%;
+    padding: 5px 0;
+    border-bottom: solid 1px #333333;
+  }
+}
+
+
+.head {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+.user-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 55px;
+  width: 100%;
+  .desc {
+    outline: 0;
+    padding: 1em;
+    height: 200px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    display: block;
+    width: 100%;
+    margin-top: 1em;
+    font-family: 'Merriweather', sans-serif;
+    border: solid 1px rgba(0, 0, 0, 0.3);
+    resize: none;
+  }
+}
+
+.campaign-video-link {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  align-items: center;
+  margin-top: 30px;
+  input {
+    width: 100%;
+    padding: 5px 0;
+    border-bottom: solid 1px #333333;
+  }
+}
+
+
+.btn-create {
+  padding: 10px 20px;
+  background: rgba(30, 30, 30, 1);
+  color: #ffffff;
+  border-radius: 10px;
+  transition: .2s;
+  margin-top: 25px;
+  &:active {
+    background: rgba(0, 0, 0, 0.7);
+
+  }
+}
+
+.closeIcon {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  img {
+    width: 50px;
+    height: 50px;
+  }
+  cursor: pointer;
+}

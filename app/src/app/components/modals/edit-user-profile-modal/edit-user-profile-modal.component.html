@@ -1,0 +1,33 @@
+<modal>
+  <div class="modal">
+    <span (click)="cbClose.emit()" class="closeIcon">
+      <img alt="close" src="https://i.ya-webdesign.com/images/close-icon-png-3.png">
+    </span>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="modal-form">
+
+      <label class="main-info">
+        <span class="head">Edit name</span>
+        <input class="input-text input-user-name" placeholder="{{data.name}}" name="user-name" ngModel>
+      </label>
+
+      <label class="main-info">
+        <span class="head">Edit hometown</span>
+        <input class="input-text input-user-hometown" placeholder="{{data.hometown}}" name="user-hometown" ngModel>
+      </label>
+
+      <label class="main-info">
+        <span class="head">Edit profession</span>
+        <input class="input-text input-user-work" placeholder="{{data.work}}" name="user-work" ngModel>
+      </label>
+
+      <label class="main-info">
+        <span class="head">Edit hobbies</span>
+        <input class="input-text input-user-hobbies" placeholder="{{data.hobbies}}" name="user-hobbies" ngModel>
+      </label>
+
+      <button class="btn-create">
+        Update info!
+      </button>
+    </form>
+  </div>
+</modal>

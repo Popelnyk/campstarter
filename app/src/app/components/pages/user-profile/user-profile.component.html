@@ -5,31 +5,51 @@
       <button *ngIf="isOwner()" class="changePhoto">Change photo</button>
     </div>
     <div class="floor">
-      <span class="info">Count of medals</span>
-      <span class="info">Count of feedbacks</span>
+      <span class="info balance" *ngIf="isOwner()">
+        <img src="http://icons.iconarchive.com/icons/graphicloads/flat-finance/24/dollar-icon.png"/>
+        Balance: {{balance}} $
+      </span>
+      <span class="info medals">
+        <img src="http://icons.iconarchive.com/icons/webalys/kameleon.pics/24/Medal-2-icon.png"/>
+          Count of medals
+      </span>
+      <span class="info">
+        <img src="http://icons.iconarchive.com/icons/pelfusion/long-shadow-media/24/Message-Bubble-icon.png"/>
+        Count of feedbacks
+      </span>
     </div>
     <div class="floor">
-      <span>list of bonuses</span>
+      <span class="bonuses-title">list of bonuses</span>
     <br>
     <div *ngFor="let item of bonuses">
-        <p>{{item}}</p>
+        <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat-2/24/check-1-icon.png"/> {{item}}
     </div>
     </div>
   </div>
   <div class="right">
     <div class="floor">
       <h4 class="title">Hello, my name is {{name}}!</h4>
-      <div class="info">
+      <div class="info" *ngIf="hometown || work || hobbies || isOwner()">
         <div class="line">
           <h3 class="prefix-title">About me:</h3>
-          <button *ngIf="isOwner()" class="edit">Edit profile</button>
+          <button *ngIf="isOwner()" class="edit" (click)="editProfile()">Edit profile</button>
         </div>
         <div class="line">
-          <span class="info-line">I live in {{hometown}}</span>
-          <span class="info-line">I work as {{work}}</span>
-          <span class="info-line">I am interested in {{hobbies}}</span>
+          <span class="info-line">
+            <img src="http://icons.iconarchive.com/icons/custom-icon-design/mono-general-3/16/home-icon.png"/>
+            I live in {{hometown}}
+          </span>
+          <span class="info-line">
+            <img src="http://icons.iconarchive.com/icons/iconsmind/outline/16/Gear-icon.png"/>
+            I work as {{work}}
+          </span>
+          <span class="info-line">
+            <img src="http://icons.iconarchive.com/icons/designcontest/outline/16/Brush-icon.png"/>
+            I am interested in {{hobbies}}
+          </span>
         </div>
       </div>
+      <div class="line1"></div>
     </div>
 
     <div class="floor">
@@ -50,10 +70,8 @@
                 <a [routerLink]="'/campaigns/'+item.id">{{item.name}}</a>
                 <button *ngIf="isOwner()" class="edit-campaign">edit</button>
               </div>
-              <div class="info">
-                <p>
-                   {{item.about}}
-                </p>
+              <div class="info" style="margin-top: 15px;">
+                <p style="overflow: hidden;  height: 65px;">{{item.about.substring(0, 416)}} . . .</p>
               </div>
             </div>
           </div>

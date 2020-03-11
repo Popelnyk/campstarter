@@ -36,7 +36,6 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
   currentTab = this.tabs[0];
 
   news: any = [];
-  bigNewText: boolean = false;
 
   comments: any = [];
 
