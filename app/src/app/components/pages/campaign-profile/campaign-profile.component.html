@@ -1,5 +1,5 @@
 <div class="container">
-  <app-upload-file></app-upload-file>
+  <app-upload-file [campaignId]="id" [urls]="urls" [ownerId]="ownerId"></app-upload-file>
   <div class="floor">
     <div class="campaign-profile">
       <div class="header">
@@ -47,7 +47,7 @@
       <button class="btn donate" *ngIf="userService.token && notFinished()" (click)="onDonate()">
         Donate
       </button>
-        <iframe *ngIf="videoLink" src="http://www.youtube.com/embed/W7qWa52k-nE"
+        <iframe *ngIf="videoLink" [src]="getYoutubeUrl()"
                 style="margin-top: 25px;" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import {Component, OnInit, OnChanges, Output} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
@@ -6,6 +6,8 @@ import {ICampaign, ICampaignBonus, ICampaignTag} from "../../../services/campaig
 import {UserService} from "../../../services/user.service";
 import {ModalsService} from "../../../services/modals.service";
 import {DONATE_MODAL} from "../../modals/donate-modal/donate-modal.component";
+import {DomSanitizer} from "@angular/platform-browser";
+
 
 @Component({
   selector: 'app-campaign-profile',
@@ -14,11 +16,12 @@ import {DONATE_MODAL} from "../../modals/donate-modal/donate-modal.component";
 })
 export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
 
-  id:number = null;
+  @Output() urls: Array<any> = [ ];
+  @Output() id:number = null;
+  @Output() ownerId: string | number = null;
   name:string = '';
   about:string = '';
   owner:string = '';
-  ownerId: string | number = null;
   theme:string = '';
   videoLink:string = '';
   goalAmount:number = null;
@@ -50,7 +53,7 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
 
   private routeSub: Subscription;
   constructor(public router: Router,private route: ActivatedRoute, private http: HttpClient,
-              public userService: UserService, public modalsService: ModalsService) { }
+              public userService: UserService, public modalsService: ModalsService, private sanitizer: DomSanitizer) { }
 
   async ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {
@@ -66,13 +69,16 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
   }
 
   async updateComments(id) {
-    this.http.get(`http://127.0.0.1:8000/campaigns/${id}/comments/`).subscribe(
+    this.comments = this.http.get(`http://127.0.0.1:8000/campaigns/${id}/comments/`);
+    /*this.http.get(`http://127.0.0.1:8000/campaigns/${id}/comments/`).subscribe(
       (data) => {
         this.comments = data;
         this.comments = this.comments.reverse()
       },
       error => console.log(error)
     )
+    */
+    console.log(this.comments);
   }
 
   async updateNews(id) {
@@ -101,6 +107,14 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
           this.bonuses = JSON.parse(data['bonuses']);
         if(data['tags'])
           this.tags = JSON.parse(data['tags']);
+
+        this.urls = [null, null, null, null, null];
+
+        for(let item of data['files']) {
+          console.log(item['position']);
+          this.urls[parseInt(item['position'])] = item;
+          console.log(this.urls[parseInt(item['position'])]);
+        }
       },
       error => {
           this.router.navigate(['/404']);
@@ -141,7 +155,6 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
       JSON.stringify({text:data.message, campaign: this.id}), this.httpOptions).subscribe(
         data => {
           console.log(data);
-          window.location.reload();
           },
       error => console.log(error)
     )
@@ -157,6 +170,10 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
 
   isOwner() {
     return this.ownerId == this.userService.userId
+  }
+
+  getYoutubeUrl() {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.videoLink.replace('watch?v=', 'embed/'));
   }
 
   //

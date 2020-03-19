@@ -1,5 +1,5 @@
 <div class="list">
-  <div *ngFor="let data of comments" class="item">
+  <div *ngFor="let data of comments | async" class="item">
     <div class="user-data">
       <div class="photo"></div>
       <div class="info">

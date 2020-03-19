@@ -10,12 +10,15 @@ import {UserService} from "../../../services/user.service";
 })
 export class MainLayoutComponent implements OnInit {
 
+  listOfCampaigns = this.campaignsService.getListOfCampaigns();
+
   constructor(public campaignsService: CampaignsService, private route:ActivatedRoute,
               private userService: UserService) { }
 
+
   ngOnInit(): void {
     this.campaignsService.getBestCampaign();
-    this.campaignsService.getListOfCampaigns();
+    //this.campaignsService.getListOfCampaigns();
     this.route.queryParams.subscribe(
       data => {
         if(data['code']) {

@@ -1,11 +1,49 @@
-<div class="wrapper">
-  <img alt="" src="https://images.wallpaperscraft.ru/image/sneg_gory_vershiny_160678_1920x1080.jpg">
+
+<div class="wrapper" *ngIf="isOwner()">
+  <img *ngIf="urls[0]" alt="" src="http://127.0.0.1:8000{{urls[0]['url']}}" (click)="deleteFile(0)">
+  <div class="uploadfilecontainerMain" *ngIf="isOwner() && !urls[0]" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event, 0)">
+    <input hidden type="file" #fileInput (change)="uploadFile($event.target.files, 0)">
+  </div>
   <div class="inline-grid">
-    <img alt="" src="https://images.wallpaperscraft.ru/image/sneg_gory_vershiny_160678_1920x1080.jpg">
-    <img alt="" src="https://images.wallpaperscraft.ru/image/sneg_gory_vershiny_160678_1920x1080.jpg">
-    <img alt="" src="https://images.wallpaperscraft.ru/image/sneg_gory_vershiny_160678_1920x1080.jpg">
-    <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
-      <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
+    <div class="photo">
+
+      <img class="inline-photo" alt=""  *ngIf="urls[1]" src="http://127.0.0.1:8000{{urls[1]['url']}}" (click)="deleteFile(1)">
+      <div class="uploadfilecontainer" *ngIf="!urls[1] && isOwner()" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event, 1)">
+        <input hidden type="file" #fileInput (change)="uploadFile($event.target.files, 1)">
+      </div>
+
+      <img class="inline-photo" alt=""  *ngIf="urls[2]" src="http://127.0.0.1:8000{{urls[2]['url']}}" (click)="deleteFile(2)">
+      <div class="uploadfilecontainer" *ngIf="!urls[2] && isOwner()" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event, 2)">
+        <input hidden type="file" #fileInput (change)="uploadFile($event.target.files, 2)">
+      </div>
+
+    </div>
+    <div class="photo">
+
+      <img class="inline-photo" alt=""  *ngIf="urls[3]" src="http://127.0.0.1:8000{{urls[3]['url']}}" (click)="deleteFile(3)">
+      <div class="uploadfilecontainer" *ngIf="!urls[3] && isOwner()" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event, 3)">
+        <input hidden type="file" #fileInput (change)="uploadFile($event.target.files, 3)">
+      </div>
+
+      <img class="inline-photo" alt=""  *ngIf="urls[4]" src="http://127.0.0.1:8000{{urls[4]['url']}}" (click)="deleteFile(4)">
+      <div class="uploadfilecontainer" *ngIf="!urls[4] && isOwner()" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event, 4)">
+        <input hidden type="file" #fileInput (change)="uploadFile($event.target.files, 4)">
+      </div>
+
     </div>
   </div>
 </div>
+
+<div class="wrapper" *ngIf="!isOwner()">
+  <img *ngIf="urls[0]" alt="" src="http://127.0.0.1:8000{{urls[0]['url']}}" (click)="deleteFile(0)">
+  <div class="inline-grid">
+    <div class="photo">
+      <img class="inline-photo" alt=""  *ngIf="urls[1]" src="http://127.0.0.1:8000{{urls[1]['url']}}" (click)="deleteFile(1)">
+      <img class="inline-photo" alt=""  *ngIf="urls[2]" src="http://127.0.0.1:8000{{urls[2]['url']}}" (click)="deleteFile(2)">
+      <img class="inline-photo" alt=""  *ngIf="urls[3]" src="http://127.0.0.1:8000{{urls[3]['url']}}" (click)="deleteFile(3)">
+      <img class="inline-photo" alt=""  *ngIf="urls[4]" src="http://127.0.0.1:8000{{urls[4]['url']}}" (click)="deleteFile(4)">
+    </div>
+  </div>
+</div>
+
+

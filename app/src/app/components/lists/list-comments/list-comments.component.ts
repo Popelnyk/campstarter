@@ -18,7 +18,7 @@ export interface IComment {
 })
 export class ListCommentsComponent {
 
-  @Input() comments: Array<IComment>;
+  @Input() comments: any;
 
   constructor(private http: HttpClient, private userService: UserService) { }
 

@@ -33,16 +33,29 @@ export class CreateCampaignModalComponent implements OnInit, ICampaign  {
   }
 
   onSubmit({form: {value: values}}): void {
+    let bad = false;
+    let valid = /^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/;
+
     this.name = values['campaign-name'];
     this.about = values.description;
+
     this.videoLink = values['video-link'];
+    if(!valid.test(this.videoLink)) {
+      bad = true;
+    }
+
     this.amountMoney = +values['amount-aim'];
-    this.campaignsService.registerCampaign(
-      { name: this.name, theme: this.theme, about: this.about,
-        youtube_link: this.videoLink, goal_amount_of_money: this.amountMoney, bonuses: JSON.stringify(this.bonuses),
-        tags: JSON.stringify(this.tags)}
-    );
-    this.cbClose.emit();
+
+    if(!bad) {
+      this.campaignsService.registerCampaign(
+        {
+          name: this.name, theme: this.theme, about: this.about,
+          youtube_link: this.videoLink, goal_amount_of_money: this.amountMoney, bonuses: JSON.stringify(this.bonuses),
+          tags: JSON.stringify(this.tags)
+        }
+      );
+      this.cbClose.emit();
+    }
   }
 
   onChooseTheme(theme) {

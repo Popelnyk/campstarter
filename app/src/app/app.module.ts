@@ -35,6 +35,7 @@ import { EditUserProfileModalComponent } from "./components/modals/edit-user-pro
 import { DragDropDirective} from "./directives/drag-drop.directive";
 import { UploadFileComponent} from "./upload-file/upload-file.component";
 
+
 @NgModule({
   declarations: [
     AppComponent,

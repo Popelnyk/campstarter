@@ -1,17 +1,35 @@
 .uploadfilecontainer {
   background-image: url("../../assets/cloud-2044823_960_720.png");
   background-repeat: no-repeat;
-  background-size: 100px;
+  background-size: 40px;
   background-position: center;
-  height: 95%;
-  width: 97%;
-  margin-top: 5px;
-  margin-left: 5px;
+  height: 145px;
+  width: 240px;
+  margin-top: 3px;
+  margin-left: 2px;
   border: 2px dashed #1C8ADB;
   border-radius: 10px;
 }
 
 .uploadfilecontainer:hover {
+  cursor: pointer;
+  background-color: #9ecbec !important;
+  opacity: 0.8;
+}
+
+.uploadfilecontainerMain {
+  background-image: url("../../assets/cloud-2044823_960_720.png");
+  background-repeat: no-repeat;
+  background-size: 60px;
+  background-position: center;
+  height: 293px;
+  width: 445px;
+  margin-top: 3px;
+  border: 2px dashed #1C8ADB;
+  border-radius: 10px;
+}
+
+.uploadfilecontainerMain:hover {
   cursor: pointer;
   background-color: #9ecbec !important;
   opacity: 0.8;
@@ -58,7 +76,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.inline-grid > img {
+.inline-photo {
   border-radius: 4px;
   padding: 2px;
   color: #d9480f;

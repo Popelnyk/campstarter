@@ -1,13 +1,19 @@
-import { Component} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Component, Input, OnInit} from '@angular/core';
+import {HttpClient, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest, HttpEvent} from "@angular/common/http";
 import {FormGroup, FormBuilder} from "@angular/forms";
+import {Observable} from "rxjs";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-upload-file',
   templateUrl: './upload-file.component.html',
   styleUrls: ['./upload-file.component.scss']
 })
-export class UploadFileComponent  {
+export class UploadFileComponent {
+
+  @Input() campaignId:number;
+  @Input() urls: Array<any>;
+  @Input() ownerId:number | string = null;
 
   form: FormGroup;
 
@@ -17,41 +23,64 @@ export class UploadFileComponent  {
 
   files: any = [];
 
-  constructor(private http: HttpClient, private formBuilder: FormBuilder) {
+  constructor(private http: HttpClient, private formBuilder: FormBuilder, private userService: UserService) {
     this.form = this.formBuilder.group({
-      profile: ['']
+      profile: [''],
+      campaignId: [''],
+      position: [''],
     });
   }
 
-  uploadFile(event) {
+
+  uploadFile(event, id) {
+    console.log(this.campaignId);
+    console.log(this.urls);
+
     for (let index = 0; index < event.length; index++) {
       const element = event[index];
       this.files.push(element);
 
       const file = element;
       this.form.get('profile').setValue(file);
+      this.form.get('campaignId').setValue(this.campaignId);
+      this.form.get('position').setValue(id);
 
       const formData = new FormData();
       formData.append('file', this.form.get('profile').value);
+      formData.append('campaign', this.form.get('campaignId').value);
+      formData.append('position', this.form.get('position').value);
 
       this.http.post('http://127.0.0.1:8000/upload-file/', formData).subscribe(
-        data => this.updateFiles(data),
+        data => { this.updateFiles(data) ; console.log(data)},
         error => console.log(error)
       )
     }
+
+
   }
 
   updateFiles(data) {
     let response = data;
     let imageURL = `${'http://127.0.0.1:8000'}${data.file}`;
-
-    console.log(data);
     console.log(imageURL);
-
-    this.files.push({url: imageURL});
   }
 
-  deleteAttachment(index) {
-    this.files.splice(index, 1)
+  isOwner() {
+    return this.ownerId == this.userService.userId
+  }
+
+  deleteFile(id) {
+    let options = {
+      headers: new HttpHeaders({'Content-Type': 'multipart/form-data'}),
+      body: {
+        pk: this.urls[id]['id'],
+        campaignId: this.campaignId
+      },
+    };
+
+    this.http.delete(`http://127.0.0.1:8000/upload-file/`, options).subscribe(
+      data => console.log(data),
+      error => console.log(error)
+    )
   }
 }

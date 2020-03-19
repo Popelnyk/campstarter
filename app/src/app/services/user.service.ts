@@ -33,7 +33,8 @@ export class UserService {
   public async login(user) {
     await this.http.post('http://127.0.0.1:8000/api/token/', JSON.stringify(user), this.httpOptions).toPromise().then(
       (data) => {
-        this.updateData(data['access'])
+        this.updateData(data['access']);
+        window.location.reload();
       },
       (error) => {
         this.errors = error['status'];
@@ -68,6 +69,7 @@ export class UserService {
   public async register(user) {
     await this.http.post('http://127.0.0.1:8000/users/', JSON.stringify(user), this.httpOptions).toPromise().then(
       (data) => {
+        console.log(data);
         if(this.errors) {
           this.errors = null;
         }

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserService} from "./user.service";
+import {Observable} from "rxjs";
 
 export interface ICampaignBonus {
   value: number,
@@ -32,8 +33,8 @@ export class CampaignsService {
 
   public bestCampaign: ICampaign = null;
   public listOfCampaigns: Array<ICampaign> = [];
+  public listOfCampaignsObservable: Observable<any>;
   public tagId:number = null;
-  public listOfCampaignsByTag:Array<ICampaign> = [];
 
   private httpOptionsWithToken = {
     headers: new HttpHeaders({
@@ -54,10 +55,13 @@ export class CampaignsService {
   }
 
   getListOfCampaigns() {
+    return this.http.get('http://127.0.0.1:8000/campaigns/');
+    /*
     this.http.get('http://127.0.0.1:8000/campaigns/').subscribe(
       (data) => this.setListOfCampaigns(data),
       error => console.warn(`${error.statusText} :: getListOfCampaigns`)
     );
+     */
   }
 
   getBestCampaign() {
@@ -69,9 +73,6 @@ export class CampaignsService {
 
 
   registerCampaign(campaign) {
-    console.log(campaign);
-    console.log(this.userService.token);
-
     this.http.post('http://127.0.0.1:8000/campaigns/', JSON.stringify(campaign), this.httpOptionsWithToken).subscribe(
       (data) => {
         console.log(data);
@@ -89,12 +90,5 @@ export class CampaignsService {
 
   setTag(tagId) {
     this.tagId = tagId;
-  }
-
-  getListOfCampaignsByTag(tagId) {
-    this.http.get(`http://127.0.0.1:8000/tags/${tagId}/`).subscribe(
-      data => this.setListOfCampaigns(data),
-      error => console.log(error)
-    )
   }
 }
