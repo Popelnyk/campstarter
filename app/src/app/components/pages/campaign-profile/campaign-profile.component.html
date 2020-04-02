@@ -1,5 +1,5 @@
 <div class="container">
-  <app-upload-file [campaignId]="id" [urls]="urls" [ownerId]="ownerId"></app-upload-file>
+  <app-upload-file [campaignId]="id" [urls]="urls" [ownerId]="ownerId" [zippedUrls]="zippedUrls"></app-upload-file>
   <div class="floor">
     <div class="campaign-profile">
       <div class="header">
@@ -64,7 +64,7 @@
       <app-list-news [news]="news" *ngSwitchCase="'NEWS'"></app-list-news>
     </div>
     <div *ngSwitchCase="'COMMENTS'" (click)="currentTab=tabs[1]">
-      <app-list-comments [comments]="comments"></app-list-comments>
+        <app-list-comments [comments]="comments"></app-list-comments>
       <div class="add-comment" *ngIf="userService.token">
         <input #inputAddComment>
         <button type="button" (click)="onPostComment(inputAddComment.value)">Post</button>

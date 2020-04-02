@@ -1,6 +1,6 @@
 <div class="list">
   <div *ngFor="let data of news" class="item">
-    <div class="date">{{data.creation_date}}</div>
+    <div class="date">{{data.creation_date.slice(0, data.creation_date.length-11).replace('T', ' ')}}</div>
     <div class="title">{{data.title}}</div>
     <div class="line"></div>
     <div class="description">

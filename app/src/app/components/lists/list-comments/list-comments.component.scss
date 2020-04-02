@@ -55,3 +55,12 @@
     }
   }
 }
+
+.scroll {
+  height:510px;
+  width:auto;
+  overflow:auto;
+  scrollbar-base-color:gold;
+  font-family:sans-serif;
+  padding:10px;
+}

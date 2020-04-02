@@ -13,13 +13,10 @@ export class UploadFileComponent {
 
   @Input() campaignId:number;
   @Input() urls: Array<any>;
+  @Input() zippedUrls: Array<any>;
   @Input() ownerId:number | string = null;
 
   form: FormGroup;
-
-  httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'multipart/form-data'})
-  };
 
   files: any = [];
 
@@ -30,7 +27,6 @@ export class UploadFileComponent {
       position: [''],
     });
   }
-
 
   uploadFile(event, id) {
     console.log(this.campaignId);
@@ -50,8 +46,13 @@ export class UploadFileComponent {
       formData.append('campaign', this.form.get('campaignId').value);
       formData.append('position', this.form.get('position').value);
 
+
       this.http.post('http://127.0.0.1:8000/upload-file/', formData).subscribe(
-        data => { this.updateFiles(data) ; console.log(data)},
+        data => {
+          this.updateFiles(data);
+          console.log(data);
+          this.addFile(data);
+          },
         error => console.log(error)
       )
     }
@@ -59,8 +60,18 @@ export class UploadFileComponent {
 
   }
 
+  addFile(data) {
+    let imageURL = data.file;
+    let id = data.id;
+    let position = data.position;
+    this.urls[data['position']] = {'url':imageURL, 'id':id, 'position': position};
+  }
+
+  removeFile(pos) {
+    this.urls[pos] = null;
+  }
+
   updateFiles(data) {
-    let response = data;
     let imageURL = `${'http://127.0.0.1:8000'}${data.file}`;
     console.log(imageURL);
   }
@@ -79,7 +90,10 @@ export class UploadFileComponent {
     };
 
     this.http.delete(`http://127.0.0.1:8000/upload-file/`, options).subscribe(
-      data => console.log(data),
+      data => {
+        console.log(data);
+        this.removeFile(id);
+      },
       error => console.log(error)
     )
   }

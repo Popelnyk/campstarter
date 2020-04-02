@@ -16,7 +16,8 @@ import {DomSanitizer} from "@angular/platform-browser";
 })
 export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
 
-  @Output() urls: Array<any> = [ ];
+  @Output() urls: Array<any> = [];
+  @Output() zippedUrls: Array<any> = [];
   @Output() id:number = null;
   @Output() ownerId: string | number = null;
   name:string = '';
@@ -69,16 +70,12 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
   }
 
   async updateComments(id) {
-    this.comments = this.http.get(`http://127.0.0.1:8000/campaigns/${id}/comments/`);
-    /*this.http.get(`http://127.0.0.1:8000/campaigns/${id}/comments/`).subscribe(
+    this.http.get(`http://127.0.0.1:8000/campaigns/${id}/comments/`).subscribe(
       (data) => {
         this.comments = data;
-        this.comments = this.comments.reverse()
       },
       error => console.log(error)
-    )
-    */
-    console.log(this.comments);
+    );
   }
 
   async updateNews(id) {
@@ -111,9 +108,13 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
         this.urls = [null, null, null, null, null];
 
         for(let item of data['files']) {
-          console.log(item['position']);
           this.urls[parseInt(item['position'])] = item;
-          console.log(this.urls[parseInt(item['position'])]);
+        }
+
+        for(let item of this.urls) {
+          if(item != null) {
+            this.zippedUrls.push(item);
+          }
         }
       },
       error => {
@@ -155,6 +156,7 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
       JSON.stringify({text:data.message, campaign: this.id}), this.httpOptions).subscribe(
         data => {
           console.log(data);
+          this.comments.push(data);
           },
       error => console.log(error)
     )

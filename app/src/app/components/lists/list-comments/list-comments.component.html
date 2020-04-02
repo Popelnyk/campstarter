@@ -1,21 +1,23 @@
-<div class="list">
-  <div *ngFor="let data of comments | async" class="item">
-    <div class="user-data">
-      <div class="photo"></div>
-      <div class="info">
-        <div class="name">{{data.owner}}</div>
-        <div class="date">{{data.creation_date}}</div>
-      </div>
-    </div>
-    <div class="text">
-      {{data.text}}
-    </div>
-    <div class="status-comment">
-      <div class="likes">
-        <span>{{data.likes_count}}</span>
-        <div (click)="onLike(data.id)">
-          <svg-likes></svg-likes>
+<div class="scroll" #scrollframe>
+  <div class="list">
+    <div *ngFor="let item of comments; let i = index" class="item" #item>
+     <div class="user-data">
+        <div class="photo"></div>
+        <div class="info">
+          <div class="name">{{item.owner}}</div>
+          <div class="date">{{item.creation_date.slice(0, item.creation_date.length-11).replace('T', ' ')}}</div>
         </div>
+     </div>
+     <div class="text">
+       {{item.text}}
+     </div>
+      <div class="status-comment">
+       <div class="likes">
+         <span>{{item.likes_count}}</span>
+         <div (click)="onLike(item.id, i)">
+           <svg-likes></svg-likes>
+         </div>
+       </div>
       </div>
     </div>
   </div>
