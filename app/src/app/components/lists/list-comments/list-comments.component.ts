@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserService} from "../../../services/user.service";
 
@@ -25,10 +25,19 @@ export class ListCommentsComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.scrollContainer = this.scrollFrame.nativeElement;
+    this.scrollContainer.style = 'height: 170px';
+    if(this.itemElements.length < 6) {
+      this.scrollContainer.style = `height:${200 * this.itemElements.length}px`;
+    }
+    else
+      this.scrollContainer.style = 'height:510px';
     this.itemElements.changes.subscribe(_ => this.onItemElementsChanged());
   }
 
   private onItemElementsChanged(): void {
+    if(this.itemElements.length < 6) {
+      this.scrollContainer.style = `height:${200 * this.itemElements.length}px`;
+    }
     this.scrollToBottom();
   }
 
