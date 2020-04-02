@@ -80,6 +80,22 @@ export class UserService {
     )
   }
 
+  public updateUserInfo(data) {
+    let httpOptionsWithToken = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    };
+    this.http.put(`http://127.0.0.1:8000/users/${this.userId}/`, data, httpOptionsWithToken).subscribe(
+      data => {
+        console.log(data);
+        window.location.reload();
+      },
+      error => console.log(error)
+    )
+  }
+
   private updateData(token) {
     this.token = token;
     this.errors = [];
