@@ -30,7 +30,7 @@ export class DonateModalComponent {
     this.amount = values.amount;
     this.id = this.data.id;
 
-    this.http.post(`http://127.0.0.1:8000/campaigns/${this.id}/donate/`,
+    this.http.post(`http://chocoretone.pythonanywhere.com/campaigns/${this.id}/donate/`,
       JSON.stringify({campaign_id:this.id, user_id:this.userService.userId, value:this.amount}),
       this.httpOptions).subscribe(
         data => {

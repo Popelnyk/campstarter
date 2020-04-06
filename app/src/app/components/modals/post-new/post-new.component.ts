@@ -33,7 +33,7 @@ export class PostNewModalComponent  {
     this.description = values.description;
     this.title = values.title;
 
-    this.http.post(`http://127.0.0.1:8000/campaigns/${this.id}/news/create-new/`,
+    this.http.post(`http://chocoretone.pythonanywhere.com/campaigns/${this.id}/news/create-new/`,
       JSON.stringify({title: this.title, about: this.description, campaign: this.id}), this.httpOptions).subscribe(
         data => {
           console.log(data);

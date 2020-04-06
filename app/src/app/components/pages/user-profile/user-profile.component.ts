@@ -51,7 +51,7 @@ export class UserProfileComponent implements OnInit{
   }
 
   async profileUpdate(id) {
-    this.http.get(`http://127.0.0.1:8000/users/${id}/`).subscribe(
+    this.http.get(`http://chocoretone.pythonanywhere.com/users/${id}/`).subscribe(
       (data) => {
         this.name = data['name'];
         this.hometown = data['hometown'];

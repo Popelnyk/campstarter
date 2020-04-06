@@ -47,7 +47,7 @@ export class UploadFileComponent {
       formData.append('position', this.form.get('position').value);
 
 
-      this.http.post('http://127.0.0.1:8000/upload-file/', formData).subscribe(
+      this.http.post('http://chocoretone.pythonanywhere.com/upload-file/', formData).subscribe(
         data => {
           this.updateFiles(data);
           console.log(data);
@@ -72,7 +72,7 @@ export class UploadFileComponent {
   }
 
   updateFiles(data) {
-    let imageURL = `${'http://127.0.0.1:8000'}${data.file}`;
+    let imageURL = `${'http://chocoretone.pythonanywhere.com'}${data.file}`;
     console.log(imageURL);
   }
 
@@ -89,7 +89,7 @@ export class UploadFileComponent {
       },
     };
 
-    this.http.delete(`http://127.0.0.1:8000/upload-file/`, options).subscribe(
+    this.http.delete(`http://chocoretone.pythonanywhere.com/upload-file/`, options).subscribe(
       data => {
         console.log(data);
         this.removeFile(id);

@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
   templateUrl: './navigation-bar.component.html',
   styleUrls: ['./navigation-bar.component.scss'],
 })
-export class NavigationBarComponent implements OnInit{
+export class NavigationBarComponent{
 
   public user: any;
 
@@ -23,12 +23,6 @@ export class NavigationBarComponent implements OnInit{
     this.searchValue = value;
   }
 
-  ngOnInit() {
-    this.user = {
-      username: 'remmidemmi',
-      password: 'fgmglfkf'
-    };
-  }
 
   login() {
     this.openAuthModal.emit();

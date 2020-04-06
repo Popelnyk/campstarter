@@ -16,7 +16,7 @@ export class CampaignsComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.campaignService.tagId);
 
-    this.http.get(`http://127.0.0.1:8000/tags/${this.campaignService.tagId}/`).subscribe(
+    this.http.get(`http://chocoretone.pythonanywhere.com/tags/${this.campaignService.tagId}/`).subscribe(
       data => {
         this.setCampaigns(data);
       }

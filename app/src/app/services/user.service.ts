@@ -31,7 +31,7 @@ export class UserService {
   }
 
   public async login(user) {
-    await this.http.post('http://127.0.0.1:8000/api/token/', JSON.stringify(user), this.httpOptions).toPromise().then(
+    await this.http.post('http://chocoretone.pythonanywhere.com/api/token/', JSON.stringify(user), this.httpOptions).toPromise().then(
       (data) => {
         this.updateData(data['access']);
         window.location.reload();
@@ -51,7 +51,7 @@ export class UserService {
         "provider": "facebook",
         "code": `${this.code}`
       };
-      this.http.post('http://127.0.0.1:8000/api/login/social/jwt-pair/', JSON.stringify(auth), this.httpOptions).subscribe(
+      this.http.post('http://chocoretone.pythonanywhere.com/api/login/social/jwt-pair/', JSON.stringify(auth), this.httpOptions).subscribe(
         data => {
           this.updateData(data['token']);
           window.location.href = 'http://localhost:4200/';
@@ -67,7 +67,7 @@ export class UserService {
   }
 
   public async register(user) {
-    await this.http.post('http://127.0.0.1:8000/users/', JSON.stringify(user), this.httpOptions).toPromise().then(
+    await this.http.post('http://chocoretone.pythonanywhere.com/users/', JSON.stringify(user), this.httpOptions).toPromise().then(
       (data) => {
         console.log(data);
         if(this.errors) {
@@ -87,7 +87,7 @@ export class UserService {
         'Authorization': `Bearer ${this.token}`
       })
     };
-    this.http.put(`http://127.0.0.1:8000/users/${this.userId}/`, data, httpOptionsWithToken).subscribe(
+    this.http.put(`http://chocoretone.pythonanywhere.com/users/${this.userId}/`, data, httpOptionsWithToken).subscribe(
       data => {
         console.log(data);
         window.location.reload();

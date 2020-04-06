@@ -55,7 +55,7 @@ export class CampaignsService {
   }
 
   getListOfCampaigns() {
-    return this.http.get('http://127.0.0.1:8000/campaigns/');
+    return this.http.get('http://chocoretone.pythonanywhere.com/campaigns/');
     /*
     this.http.get('http://127.0.0.1:8000/campaigns/').subscribe(
       (data) => this.setListOfCampaigns(data),
@@ -65,7 +65,7 @@ export class CampaignsService {
   }
 
   getBestCampaign() {
-    this.http.get('http://127.0.0.1:8000/campaigns/best/').subscribe(
+    this.http.get('http://chocoretone.pythonanywhere.com/campaigns/best/').subscribe(
       (data) => this.setBestCampaign(data[0]),
       error => console.warn(`${error.statusText} :: getBestCampaign`)
     );
@@ -73,7 +73,7 @@ export class CampaignsService {
 
 
   registerCampaign(campaign) {
-    this.http.post('http://127.0.0.1:8000/campaigns/', JSON.stringify(campaign), this.httpOptionsWithToken).subscribe(
+    this.http.post('http://chocoretone.pythonanywhere.com/campaigns/', JSON.stringify(campaign), this.httpOptionsWithToken).subscribe(
       (data) => {
         console.log(data);
         window.location.reload();
@@ -83,7 +83,7 @@ export class CampaignsService {
   }
 
   deleteCampaign(id) {
-    this.http.delete(`http://127.0.0.1:8000/campaigns/${id}/`, this.httpOptionsWithToken).subscribe(
+    this.http.delete(`http://chocoretone.pythonanywhere.com/campaigns/${id}/`, this.httpOptionsWithToken).subscribe(
       (data) => {
         console.log(data);
         window.location.reload();

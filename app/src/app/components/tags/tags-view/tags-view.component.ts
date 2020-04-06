@@ -17,7 +17,7 @@ export class TagsViewComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.http.get('http://127.0.0.1:8000/tags/').subscribe(
+    this.http.get('http://chocoretone.pythonanywhere.com/tags/').subscribe(
       data => this.tags = data,
       error => console.log(error)
     )

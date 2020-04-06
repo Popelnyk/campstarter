@@ -1,18 +1,18 @@
 
 <div class="wrapper" *ngIf="isOwner()">
-  <img *ngIf="urls[0]" alt="" src="http://127.0.0.1:8000{{urls[0]['url']}}" (click)="deleteFile(0)">
+  <img *ngIf="urls[0]" alt="" src="http://chocoretone.pythonanywhere.com{{urls[0]['url']}}" (click)="deleteFile(0)">
   <div class="uploadfilecontainerMain" *ngIf="isOwner() && !urls[0]" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event, 0)">
     <input hidden type="file" #fileInput (change)="uploadFile($event.target.files, 0)">
   </div>
   <div class="inline-grid">
     <div class="photo">
 
-      <img class="inline-photo" alt=""  *ngIf="urls[1]" src="http://127.0.0.1:8000{{urls[1]['url']}}" (click)="deleteFile(1)">
+      <img class="inline-photo" alt=""  *ngIf="urls[1]" src="http://chocoretone.pythonanywhere.com{{urls[1]['url']}}" (click)="deleteFile(1)">
       <div class="uploadfilecontainer" *ngIf="!urls[1] && isOwner()" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event, 1)">
         <input hidden type="file" #fileInput (change)="uploadFile($event.target.files, 1)">
       </div>
 
-      <img class="inline-photo" alt=""  *ngIf="urls[2]" src="http://127.0.0.1:8000{{urls[2]['url']}}" (click)="deleteFile(2)">
+      <img class="inline-photo" alt=""  *ngIf="urls[2]" src="http://chocoretone.pythonanywhere.com{{urls[2]['url']}}" (click)="deleteFile(2)">
       <div class="uploadfilecontainer" *ngIf="!urls[2] && isOwner()" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event, 2)">
         <input hidden type="file" #fileInput (change)="uploadFile($event.target.files, 2)">
       </div>
@@ -20,12 +20,12 @@
     </div>
     <div class="photo">
 
-      <img class="inline-photo" alt=""  *ngIf="urls[3]" src="http://127.0.0.1:8000{{urls[3]['url']}}" (click)="deleteFile(3)">
+      <img class="inline-photo" alt=""  *ngIf="urls[3]" src="http://chocoretone.pythonanywhere.com{{urls[3]['url']}}" (click)="deleteFile(3)">
       <div class="uploadfilecontainer" *ngIf="!urls[3] && isOwner()" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event, 3)">
         <input hidden type="file" #fileInput (change)="uploadFile($event.target.files, 3)">
       </div>
 
-      <img class="inline-photo" alt=""  *ngIf="urls[4]" src="http://127.0.0.1:8000{{urls[4]['url']}}" (click)="deleteFile(4)">
+      <img class="inline-photo" alt=""  *ngIf="urls[4]" src="http://chocoretone.pythonanywhere.com{{urls[4]['url']}}" (click)="deleteFile(4)">
       <div class="uploadfilecontainer" *ngIf="!urls[4] && isOwner()" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event, 4)">
         <input hidden type="file" #fileInput (change)="uploadFile($event.target.files, 4)">
       </div>
@@ -35,38 +35,38 @@
 </div>
 
 <div class="wrapper1" *ngIf="!isOwner() && zippedUrls.length == 1">
-  <img alt="" src="http://127.0.0.1:8000{{zippedUrls[0]['url']}}">
+  <img alt="" src="http://chocoretone.pythonanywhere.com{{zippedUrls[0]['url']}}">
 </div>
 
 <div class="wrapper2" *ngIf="!isOwner() && zippedUrls.length == 2">
-  <img alt="" src="http://127.0.0.1:8000{{zippedUrls[0]['url']}}">
-  <img alt="" src="http://127.0.0.1:8000{{zippedUrls[1]['url']}}">
+  <img alt="" src="http://chocoretone.pythonanywhere.com{{zippedUrls[0]['url']}}">
+  <img alt="" src="http://chocoretone.pythonanywhere.com{{zippedUrls[1]['url']}}">
 </div>
 
 <div class="wrapper3" *ngIf="!isOwner() && zippedUrls.length == 3">
-  <img alt="" src="http://127.0.0.1:8000{{zippedUrls[0]['url']}}">
-  <img alt=""  src="http://127.0.0.1:8000{{zippedUrls[1]['url']}}">
-  <img alt=""  src="http://127.0.0.1:8000{{zippedUrls[2]['url']}}">
+  <img alt="" src="http://chocoretone.pythonanywhere.com{{zippedUrls[0]['url']}}">
+  <img alt=""  src="http://chocoretone.pythonanywhere.com{{zippedUrls[1]['url']}}">
+  <img alt=""  src="http://chocoretone.pythonanywhere.com{{zippedUrls[2]['url']}}">
 </div>
 
 
 <div class="wrapper4" *ngIf="!isOwner() && zippedUrls.length == 4">
-  <img class="inline-photo4" alt=""  src="http://127.0.0.1:8000{{zippedUrls[0]['url']}}">
-  <img class="inline-photo4" alt=""  src="http://127.0.0.1:8000{{zippedUrls[1]['url']}}">
+  <img class="inline-photo4" alt=""  src="http://chocoretone.pythonanywhere.com{{zippedUrls[0]['url']}}">
+  <img class="inline-photo4" alt=""  src="http://chocoretone.pythonanywhere.com{{zippedUrls[1]['url']}}">
   <div class="inline-grid4">
     <div class="photo4">
-      <img class="inline-photo4" alt=""  src="http://127.0.0.1:8000{{zippedUrls[2]['url']}}">
-      <img class="inline-photo4" alt=""  src="http://127.0.0.1:8000{{zippedUrls[3]['url']}}">
+      <img class="inline-photo4" alt=""  src="http://chocoretone.pythonanywhere.com{{zippedUrls[2]['url']}}">
+      <img class="inline-photo4" alt=""  src="http://chocoretone.pythonanywhere.com{{zippedUrls[3]['url']}}">
     </div>
   </div>
 </div>
 
 
 <div class="wrapper" *ngIf="!isOwner() && zippedUrls.length == 5">
-  <img class="inline-photo" alt=""  src="http://127.0.0.1:8000{{zippedUrls[0]['url']}}">
+  <img class="inline-photo" alt=""  src="http://chocoretone.pythonanywhere.com{{zippedUrls[0]['url']}}">
   <div class="inline-grid">
     <div class="photo" *ngFor="let item of zippedUrls.slice(1); let i = index">
-      <img class="inline-photo" alt="" src="http://127.0.0.1:8000{{zippedUrls[i]['url']}}">
+      <img class="inline-photo" alt="" src="http://chocoretone.pythonanywhere.com{{zippedUrls[i]['url']}}">
     </div>
   </div>
 </div>

@@ -25,7 +25,7 @@ export class SearchDropdownComponent implements OnChanges{
   async ngOnChanges(changes: SimpleChanges) {
     if(changes['searchValue'].isFirstChange()) return;
 
-    await this.http.get(`http://127.0.0.1:8000/campaigns/?search=${changes['searchValue']['currentValue']}`).subscribe(
+    await this.http.get(`http://chocoretone.pythonanywhere.com/campaigns/?search=${changes['searchValue']['currentValue']}`).subscribe(
       data => {
         this.list = data;
         this.isList = data[0];

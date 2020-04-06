@@ -62,7 +62,7 @@ export class ListCommentsComponent implements AfterViewInit {
   };
 
   async onLike(id, index) {
-    await this.http.post(`http://127.0.0.1:8000/comments/${id}/like/`, JSON.stringify({comment:id}) ,
+    await this.http.post(`http://chocoretone.pythonanywhere.com/comments/${id}/like/`, JSON.stringify({comment:id}) ,
       this.httpOptions).subscribe(
       data => {
         if(data['id']) {

@@ -70,7 +70,7 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
   }
 
   async updateComments(id) {
-    this.http.get(`http://127.0.0.1:8000/campaigns/${id}/comments/`).subscribe(
+    this.http.get(`http://chocoretone.pythonanywhere.com/campaigns/${id}/comments/`).subscribe(
       (data) => {
         this.comments = data;
       },
@@ -79,7 +79,7 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
   }
 
   async updateNews(id) {
-    this.http.get(`http://127.0.0.1:8000/campaigns/${id}/news/`).subscribe(
+    this.http.get(`http://chocoretone.pythonanywhere.com/campaigns/${id}/news/`).subscribe(
       (data) => {
         this.news = data;
         this.news = this.news.reverse()
@@ -89,7 +89,7 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
   }
 
   async updateCampaign(id) {
-    await this.http.get(`http://127.0.0.1:8000/campaigns/${id}/`).subscribe(
+    await this.http.get(`http://chocoretone.pythonanywhere.com/campaigns/${id}/`).subscribe(
       (data) => {
         this.name = data['name'];
         this.theme = data['theme'];
@@ -129,7 +129,7 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
 
   onSelectStar(star) {
 
-    this.http.post(`http://127.0.0.1:8000/campaigns/${this.id}/rating/`, JSON.stringify({value: star}), this.httpOptions)
+    this.http.post(`http://chocoretone.pythonanywhere.com/campaigns/${this.id}/rating/`, JSON.stringify({value: star}), this.httpOptions)
       .subscribe(
         () => {
           this.activeStar = star;
@@ -152,7 +152,7 @@ export class CampaignProfileComponent implements OnInit, OnChanges, ICampaign {
       date: new Date
     };
 
-    this.http.post(`http://127.0.0.1:8000/campaigns/${this.id}/comments/`,
+    this.http.post(`http://chocoretone.pythonanywhere.com/campaigns/${this.id}/comments/`,
       JSON.stringify({text:data.message, campaign: this.id}), this.httpOptions).subscribe(
         data => {
           console.log(data);
